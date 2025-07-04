@@ -5,8 +5,8 @@
     btop
     killall
     tree
-    vim
     neofetch
+    gcc
 
     adwaita-icon-theme
 
@@ -15,7 +15,6 @@
     spotify
     discord
     synology-drive-client
-    kdePackages.kate
-
+    
   ];
 }
