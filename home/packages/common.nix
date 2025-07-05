@@ -9,11 +9,10 @@
     gcc
     nodejs_20
     unzip
-    xclip
     ripgrep
     gthumb
     adwaita-icon-theme
-
+    
     brave
     stremio
     spotify

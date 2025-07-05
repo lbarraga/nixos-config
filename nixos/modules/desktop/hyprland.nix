@@ -8,6 +8,7 @@
     XCURSOR_SIZE = "24";
   };
 
+  environment.systemPackages = [ pkgs.wl-clipboard ];
 
   # Required for Wayland apps to work correctly
   environment.sessionVariables = {
