@@ -15,7 +15,9 @@
     
     starship
     cava
-
+    vlc
+    
+    obsidian
     brave
     stremio
     spotify
