@@ -7,7 +7,7 @@
   
   "modules-left":   ["custom/launcher", "pulseaudio", "custom/spotify"],
   "modules-center": ["clock#time"],
-  "modules-right":  ["custom/tailscale", "tray", "clock#date", "battery", "temperature"],
+  "modules-right":  ["custom/tailscale", "tray", "clock#date", "battery"],
   
   "custom/spotify": {
   	"format": " {}",
