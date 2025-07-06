@@ -9,6 +9,7 @@
     ./packages/gpg/gpg.nix
     ./packages/fonts.nix
     ./packages/shell/zsh.nix
+    ./packages/shell/starship.nix
     ./packages/hypr
   ];
 }

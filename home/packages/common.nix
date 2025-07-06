@@ -13,6 +13,8 @@
     gthumb
     adwaita-icon-theme
     
+    starship
+
     brave
     stremio
     spotify
