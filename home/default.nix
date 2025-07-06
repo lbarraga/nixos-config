@@ -11,6 +11,7 @@
     ./packages/shell/zsh.nix
     ./packages/shell/starship.nix
     ./packages/hypr
+    ./packages/dev
   ];
 }
 
