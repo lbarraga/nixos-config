@@ -14,6 +14,7 @@
     adwaita-icon-theme
     
     starship
+    cava
 
     brave
     stremio
