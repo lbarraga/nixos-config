@@ -19,7 +19,6 @@
     vlc
     
     obsidian
-    brave
     stremio
     spotify
     discord
