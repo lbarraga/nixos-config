@@ -12,6 +12,7 @@
     ripgrep
     gthumb
     adwaita-icon-theme
+    networkmanagerapplet
     
     starship
     cava
