@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, settings, ... }:
 
 {
   programs.hyprland.enable = true;
@@ -21,7 +21,7 @@
     settings = {
       default_session = {
         command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "lukasbt";
+        user = settings.username; 
       };
     };
   };

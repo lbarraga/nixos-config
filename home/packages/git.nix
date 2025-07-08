@@ -1,17 +1,17 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, ... }:
 {
 
   programs.git = {
     enable = true;
-    userName = "Lukas Barragan Torres";
-    userEmail = "lukas.barragantorres@ugent.be";
+    userName = settings.userFullName;
+    userEmail = settings.userEmail;
 
     extraConfig = {
       init.defaultBranch = "main";
     };
 
     signing = {
-      key = "39FD4F630877B4D1";
+      key = settings.gitGpgKeyId;
       signByDefault = true;
     };
   };

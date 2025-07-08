@@ -1,5 +1,6 @@
+{ settings , ...}:
 {
-  networking.hostName = "nixos";
+  networking.hostName = settings.hostname;
   networking.networkmanager.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -8,20 +9,9 @@
 
   system.stateVersion = "25.05";
 
-  time.timeZone = "Europe/Brussels";
+  time.timeZone = settings.timeZone;
 
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "nl_BE.UTF-8";
-    LC_IDENTIFICATION = "nl_BE.UTF-8";
-    LC_MEASUREMENT = "nl_BE.UTF-8";
-    LC_MONETARY = "nl_BE.UTF-8";
-    LC_NAME = "nl_BE.UTF-8";
-    LC_NUMERIC = "nl_BE.UTF-8";
-    LC_PAPER = "nl_BE.UTF-8";
-    LC_TELEPHONE = "nl_BE.UTF-8";
-    LC_TIME = "nl_BE.UTF-8";
-  };
+  i18n.defaultLocale = settings.locale;
 
-  console.keyMap = "be-latin1";
+  console.keyMap = settings.keyboardLayout;
 }

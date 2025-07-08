@@ -1,12 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, ... }:
 
 {
 
   programs.zsh.enable = true;
 
-  users.users.lukasbt = {
+  users.users.${settings.username} = {
     isNormalUser = true;
-    description = "Lukas Barragan Torres";
+    description = settings.userFullName;
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
