@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, settings, ... }:
 
 let
-  gpgKey = builtins.toPath ./publickey.gpg;
+  gpgKey = pkgs.fetchurl {
+    url = settings.gpg.publicKeyLink;
+    sha256 = settings.gpg.publicKeyHash;
+  };
 in
 {
   home.packages = with pkgs; [

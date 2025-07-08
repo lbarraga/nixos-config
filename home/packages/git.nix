@@ -11,7 +11,7 @@
     };
 
     signing = {
-      key = settings.gitGpgKeyId;
+      key = settings.gpg.keyId;
       signByDefault = true;
     };
   };
