@@ -11,7 +11,6 @@
     shellAliases = {
       ll = "ls -alh";
       nix-shell = "nix-shell --run zsh";
-      clip = "xclip -selection clipboard"; # use `<command> | clip` to copy to clipboard
     };
 
     initContent = ''
