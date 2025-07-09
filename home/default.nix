@@ -5,6 +5,7 @@
     ./settings.nix
     ./packages/common.nix
     ./packages/git.nix
+    ./packages/eza.nix
     ./packages/direnv.nix
     ./packages/brave-browser.nix
     ./packages/nvim/nvim.nix

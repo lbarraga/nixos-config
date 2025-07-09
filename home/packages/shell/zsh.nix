@@ -9,8 +9,10 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      ll = "ls -alh";
       nix-shell = "nix-shell --run zsh";
+      ls = "eza";
+      ll = "eza -lah";
+      lt = "eza --tree"; # Tree view
     };
 
     initContent = ''
