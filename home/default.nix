@@ -9,7 +9,7 @@
     ./packages/direnv.nix
     ./packages/brave-browser.nix
     ./packages/nvim/nvim.nix
-    ./packages/gpg/gpg.nix
+    ./packages/gpg.nix
     ./packages/fonts.nix
     ./packages/shell/zsh.nix
     ./packages/shell/starship.nix
