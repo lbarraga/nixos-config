@@ -2,9 +2,7 @@
 
 {  
   home.packages = with pkgs; [
-    (python313.withPackages (ps: [
-      ps.pip
-    ]))
+    python313
     uv
   ];
 

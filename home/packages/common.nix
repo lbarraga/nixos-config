@@ -9,8 +9,6 @@
     gcc
     nodejs_20
     unzip
-    wget
-    ripgrep
     gthumb
     adwaita-icon-theme
     networkmanagerapplet
