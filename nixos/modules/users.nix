@@ -15,5 +15,8 @@
     shell = pkgs.zsh;
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  security = {
+    sudo.wheelNeedsPassword = false;
+    pam.services.hyprlock = { };
+  };
 }

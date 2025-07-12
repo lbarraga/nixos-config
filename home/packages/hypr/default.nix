@@ -1,9 +1,11 @@
 { pkgs, lib, ... }:
 
 {
-
   home.file.".config/hypr/hyprland.conf".text =
     builtins.readFile ./hyprland/hyprland.conf;
+
+  home.file.".config/hypr/hyprlock.conf".text =
+    builtins.readFile ./hyprlock/hyprlock.conf;
 
   home.file.".config/hypr/hyprpaper.conf".text =
     builtins.readFile ./hyprpaper/hyprpaper.conf;
@@ -25,6 +27,7 @@
     nautilus
     wofi
     hyprpaper
+    hyprlock
     waybar
     swaynotificationcenter
     hyprshot
