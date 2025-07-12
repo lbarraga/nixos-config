@@ -85,6 +85,16 @@ window#waybar > box {
   margin-right: 6px;
 }
 
+#battery.discharging.warning {
+    background-color: #d08770;
+    color: #2e3440;
+}
+
+#battery.discharging.critical {
+    background-color: #bf616a;
+    color: #eceff4;
+}
+
 #window {
   color: #d8dee9;
   background: #3b4252;
