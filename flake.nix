@@ -18,8 +18,10 @@
         userEmail = "lukas.barragantorres@ugent.be";
 
         gpg = {
-          publicKeyLink = "https://keys.openpgp.org/vks/v1/by-fingerprint/7D7927AE9E9E61C7736EE6A8D78940BF1814BF2E";
-          publicKeyHash = "98667971be2b8ff245c38922e94d14f83cbfbb5103b9313ae5bb668fb8634b06";
+          publicKeyLink =
+            "https://keys.openpgp.org/vks/v1/by-fingerprint/7D7927AE9E9E61C7736EE6A8D78940BF1814BF2E";
+          publicKeyHash =
+            "98667971be2b8ff245c38922e94d14f83cbfbb5103b9313ae5bb668fb8634b06";
           keyId = "39FD4F630877B4D1";
         };
 
@@ -30,13 +32,12 @@
         keyboardLayout = "be-latin1";
       };
 
-    in
-    {
+    in {
       nixosConfigurations.${settings.hostname} = nixpkgs.lib.nixosSystem {
         system = settings.system;
-        specialArgs = { inherit inputs settings; }; 
+        specialArgs = { inherit inputs settings; };
         modules = [
-          ./hosts/laptop 
+          ./hosts/laptop
           home-manager.nixosModules.home-manager
           {
             home-manager = {

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  
+
   programs.chromium = {
     enable = true;
     package = pkgs.brave;
@@ -10,9 +10,7 @@
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
       { id = "hjfkenebldkfgibelglepinlabpjfbll"; } # no youtube shorts
     ];
-    commandLineArgs = [
-      "--disable-features=WebRtcAllowInputVolumeAdjustment"
-    ];
+    commandLineArgs = [ "--disable-features=WebRtcAllowInputVolumeAdjustment" ];
   };
 
 }

@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
 {
   imports = [
     ./modules/users.nix

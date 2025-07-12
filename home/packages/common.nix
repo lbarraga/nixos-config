@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     htop
     btop
@@ -12,16 +11,16 @@
     gthumb
     adwaita-icon-theme
     networkmanagerapplet
-    
+
     starship
     cava
     vlc
-    
+
     obsidian
     stremio
     spotify
     discord
     synology-drive-client
-    
+
   ];
 }

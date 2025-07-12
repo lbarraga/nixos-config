@@ -1,15 +1,14 @@
-{ config, pkgs, settings, ... }:
+{ pkgs, settings, ... }:
 
 let
   gpgKey = pkgs.fetchurl {
     url = settings.gpg.publicKeyLink;
     sha256 = settings.gpg.publicKeyHash;
   };
-in
-{
+in {
   home.packages = with pkgs; [
     gnupg
-    pinentry-curses  # or gtk/qt depending on your DE
+    pinentry-curses # or gtk/qt depending on your DE
     yubikey-manager
   ];
 
@@ -19,9 +18,7 @@ in
     pinentry.package = pkgs.pinentry-curses;
   };
 
-  programs.gpg = {
-    enable = true;
-  };
+  programs.gpg = { enable = true; };
 
   # script that imports my gpg public key for use with git
   home.activation.importGPGKey = ''

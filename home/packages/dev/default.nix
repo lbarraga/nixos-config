@@ -1,8 +1,2 @@
-{ config, pkgs, ... }:
-
-{
-  imports = [
-    ./python.nix
-  ];
-}
+{ imports = [ ./python.nix ]; }
 

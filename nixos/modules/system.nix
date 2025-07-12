@@ -1,5 +1,4 @@
-{ settings , ...}:
-{
+{ settings, ... }: {
   networking.hostName = settings.hostname;
   networking.networkmanager.enable = true;
 

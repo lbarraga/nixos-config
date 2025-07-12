@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.font-awesome
-    pkgs.nerd-fonts.jetbrains-mono
-  ];
+  home.packages = [ pkgs.font-awesome pkgs.nerd-fonts.jetbrains-mono ];
 }

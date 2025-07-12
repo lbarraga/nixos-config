@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   # A modern ls alternative
   programs.eza = {

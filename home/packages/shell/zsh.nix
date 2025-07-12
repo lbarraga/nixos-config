@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   programs.zsh = {
     enable = true;
@@ -16,8 +14,8 @@
     };
 
     initContent = ''
-    eval "$(starship init zsh)"
-    zstyle ':completion:*' menu select
+      eval "$(starship init zsh)"
+      zstyle ':completion:*' menu select
     '';
 
   };

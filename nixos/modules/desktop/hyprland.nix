@@ -21,7 +21,7 @@
     settings = {
       default_session = {
         command = "${pkgs.hyprland}/bin/Hyprland";
-        user = settings.username; 
+        user = settings.username;
       };
     };
   };
