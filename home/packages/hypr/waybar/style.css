@@ -16,34 +16,34 @@ window#waybar > box {
     box-shadow: 1 1 3 1px #151515;
 }
 
+/* This makes the main #workspaces container transparent */
+#workspaces {
+    background: transparent;
+    padding: 0;
+}
+
+/* This styles all workspace numbers */
 #workspaces button {
-  padding: 0 0.6em;
-  color: #d8dee9;
-  border-radius: 6px;
-  margin-right: 4px;
-  margin-left: 4px;
-  margin-top: 2px;
-  margin-bottom: 2px;
+    padding: 0 2px; /* Controls space to the left/right of the number */
+    margin: 0 1px;  /* Controls space between each number */
+    color: #aeb1bA; /* Dimmer Nord color for inactive workspaces */
+    background-color: transparent;
+    border-radius: 0;
+    /* This prevents the layout from shifting when the active border appears */
+    border-bottom: 2px solid transparent; 
 }
 
+/* This styles only the ACTIVE workspace number */
 #workspaces button.active {
-  color: #d8dee9;
-  background: #434c5e;
+    color: #d8dee9; /* Brighter Nord color for the active workspace */
+    border-bottom: 2px solid #d8dee9; /* This creates the underline */
 }
 
-#workspaces button.focused {
-  color: #d8dee9;
-  background: #434c5e;
-}
-
-#workspaces button.urgent {
-  color: #bf616a;
-  background: #d8dee9;
-}
-
+/* This provides a subtle hover effect */
 #workspaces button:hover {
-  background: #2e3440;
-  color: #d8dee9;
+    background: #434c5e;
+    border-radius: 3px;
+    border-bottom: 2px solid #434c5e; /* Match border to hover background */
 }
 
 #date,

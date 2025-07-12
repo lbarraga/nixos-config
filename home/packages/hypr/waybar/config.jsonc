@@ -5,9 +5,9 @@
   // "width": 20,
   "height": 1,
   
-  "modules-left":   ["custom/launcher", "pulseaudio", "custom/spotify"],
+  "modules-left":   ["custom/launcher", "hyprland/workspaces"],
   "modules-center": ["clock#time"],
-  "modules-right":  ["custom/tailscale", "tray", "clock#date", "battery"],
+  "modules-right":  ["custom/spotify", "pulseaudio", "custom/tailscale", "tray", "battery"],
   
   "custom/spotify": {
   	"format": " {}",
@@ -20,6 +20,13 @@
   	"exec-if": "playerctl -l | grep -q spotify",
 	"exec-on-event": true
   },
+
+"hyprland/workspaces": {
+  "format": "{id}",
+  "persistent-workspaces": {
+    "*": 10 // Shows 10 persistent workspaces on all monitors
+  }
+},
 
   "custom/tailscale": {
   	"format": "{}",
@@ -50,7 +57,8 @@
   "clock#time": {
     "interval": 1,
     "format": " {:%H:%M:%S}",
-    "tooltip": false
+    "tooltip": true,
+    "tooltip-format": "<big>{:%A, %B %d, %Y}</big>"
   },
 
   "clock#date": {
@@ -68,7 +76,7 @@
       "headphone": " ",
       "hands-free": " ",
       "headset": " ",
-      "default": ["", "", "墳", " "]
+      "default": ["", " ", " "]
     }
   },
  
