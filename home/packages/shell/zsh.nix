@@ -8,6 +8,7 @@
 
     shellAliases = {
       nix-shell = "nix-shell --run zsh";
+      rebuild = "sudo nixos-rebuild switch --flake ~/nix-config#nixos";
       ls = "eza";
       ll = "eza -lah";
       lt = "eza --tree"; # Tree view
