@@ -7,5 +7,6 @@
     ./modules/bluetooth.nix
     ./modules/desktop/hyprland.nix
     ./modules/packages/tailscale.nix
+    ./modules/packages/steam.nix
   ];
 }
