@@ -9,7 +9,7 @@
 
   home.file.".config/hypr/hyprpaper.conf".text =
     builtins.readFile ./hyprpaper/hyprpaper.conf;
-  home.file.".config/hypr/wallpaper.png".source = ./hyprpaper/wallpaper.png;
+  home.file.".config/hypr/wallpaper.jpg".source = ./hyprpaper/wallpaper.jpg;
 
   home.file.".config/waybar".source = ./waybar;
   home.activation.makeWaybarScriptsExecutable =
