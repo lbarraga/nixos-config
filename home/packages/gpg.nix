@@ -24,6 +24,9 @@ in {
   home.activation.importGPGKey = ''
     echo "Importing GPG key..."
     ${pkgs.gnupg}/bin/gpg --import ${gpgKey}
+
+    echo "Setting ultimate trust..."
+    echo "${settings.gpg.fingerprint}:6:" | ${pkgs.gnupg}/bin/gpg --import-ownertrust
   '';
 
   programs.ssh.enable = true;
