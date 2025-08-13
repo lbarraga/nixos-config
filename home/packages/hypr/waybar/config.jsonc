@@ -17,6 +17,7 @@
   	"on-click": "playerctl -p spotify play-pause",
   	"on-scroll-up": "playerctl -p spotify next",
   	"on-scroll-down": "playerctl -p spotify previous",
+    "smooth-scrolling-threshold": 10.0,
   	"exec-if": "playerctl -l | grep -q spotify",
 	"exec-on-event": true
   },
