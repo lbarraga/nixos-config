@@ -43,13 +43,18 @@
 
   "battery": {
     "bat": "BAT0",
-    "interval": 30,
+    "interval": 10,
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
   	"states": {
   		"warning": 15,
-  		"critical": 10
+  		"critical": 5
   	},
+    "events": {
+        "on-discharging-warning": "notify-send -u normal 'Low Battery'",
+        "on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
+        "on-charging-100": "notify-send -u normal 'Battery Full!'"
+	  },
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{time} remaining" 
   },

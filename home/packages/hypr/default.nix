@@ -30,6 +30,7 @@
     hyprlock
     waybar
     swaynotificationcenter
+    libnotify
     hyprshot
     hyprlock
     hyprcursor
