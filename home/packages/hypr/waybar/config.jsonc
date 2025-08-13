@@ -31,9 +31,9 @@
 
   "custom/tailscale": {
   	"format": "{}",
-	"exec": "~/.config/waybar/scripts/tailscale.sh",
-	"return-type": "json",
-	"interval": 5
+    "exec": "~/.config/waybar/scripts/tailscale.sh",
+    "return-type": "json",
+    "interval": 5
   },
 
   "tray": {
@@ -78,6 +78,7 @@
     "format-muted": " muted",
     "scroll-step": 5,
     "on-click": "pactl set-sink-mute 0 toggle",
+    "smooth-scrolling-threshold": 5.0,
     "format-icons": {
       "headphone": " ",
       "hands-free": " ",
