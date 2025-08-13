@@ -22,7 +22,7 @@
             "https://keys.openpgp.org/vks/v1/by-fingerprint/7D7927AE9E9E61C7736EE6A8D78940BF1814BF2E";
           publicKeyHash =
             "98667971be2b8ff245c38922e94d14f83cbfbb5103b9313ae5bb668fb8634b06";
-          fingerprint = "7D7927AE9E9E61C7736EE6A8D78940BF1814BF2E"
+          fingerprint = "7D7927AE9E9E61C7736EE6A8D78940BF1814BF2E";
           keyId = "39FD4F630877B4D1";
         };
 
