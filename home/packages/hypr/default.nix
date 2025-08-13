@@ -24,7 +24,7 @@
   home.packages = with pkgs; [
     hyprland
     kitty
-    nautilus
+    nnn
     wofi
     hyprpaper
     hyprlock
