@@ -24,9 +24,6 @@
 
   };
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
   # Enable OpenGL
   hardware.graphics = { enable = true; };
 
