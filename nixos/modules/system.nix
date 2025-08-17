@@ -1,5 +1,5 @@
-{ settings, ... }: {
-  networking.hostName = settings.hostname;
+{ settings, config, ... }: {
+  networking.hostName = config.my.host.hostname;
   networking.networkmanager.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -11,6 +11,4 @@
   time.timeZone = settings.timeZone;
 
   i18n.defaultLocale = settings.locale;
-
-  console.keyMap = settings.keyboardLayout;
 }

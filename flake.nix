@@ -26,30 +26,42 @@
           keyId = "39FD4F630877B4D1";
         };
 
-        hostname = "nixos";
         system = "x86_64-linux";
         timeZone = "Europe/Brussels";
         locale = "nl_BE.UTF-8";
-        keyboardLayout = "be-latin1";
       };
 
+      mkSystem = hostname:
+        nixpkgs.lib.nixosSystem {
+          system = settings.system;
+          specialArgs = {
+            inputs = inputs;
+            settings = settings;
+          };
+          modules = [
+            ./hosts/${hostname}
+            ./nixos/modules/options.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = {
+                  settings = settings;
+                  nixosConfig = self.nixosConfigurations.${hostname}.config;
+                };
+                users.${settings.username} = import ./home;
+              };
+            }
+          ];
+        };
+
     in {
-      nixosConfigurations.${settings.hostname} = nixpkgs.lib.nixosSystem {
-        system = settings.system;
-        specialArgs = { inherit inputs settings; };
-        modules = [
-          ./hosts/laptop
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit settings; };
-              users.${settings.username} = import ./home;
-            };
-          }
-        ];
+      nixosConfigurations = {
+        desktop = mkSystem "desktop";
+        laptop = mkSystem "laptop";
       };
     };
 }

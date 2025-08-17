@@ -18,6 +18,7 @@ window#waybar > box {
 
 /* This makes the main #workspaces container transparent */
 #workspaces {
+    font-weight: normal;
     background: transparent;
     padding: 0;
 }
@@ -31,6 +32,10 @@ window#waybar > box {
     border-radius: 0;
     /* This prevents the layout from shifting when the active border appears */
     border-bottom: 2px solid transparent; 
+}
+
+#workspaces button.visible {
+  border-bottom: 2px solid #aeb1bA;
 }
 
 /* This styles only the ACTIVE workspace number */
