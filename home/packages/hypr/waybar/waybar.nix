@@ -105,7 +105,8 @@
         "custom/launcher" = {
           format = "<span size='15000' color='#d8dee9'> </span>";
           on-click = ''
-            kitty sh -c "sudo nixos-rebuild switch --flake ~/nix-config#nixos; exec zsh"'';
+            kitty sh -c "sudo nixos-rebuild switch --flake ~/nix-config#${nixosConfig.my.host.hostname}; exec zsh"
+          '';
         };
       };
 

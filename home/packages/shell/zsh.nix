@@ -1,4 +1,4 @@
-{
+{ nixosConfig, ... }: {
   programs.zsh = {
     enable = true;
 
@@ -8,7 +8,8 @@
 
     shellAliases = {
       nix-shell = "nix-shell --run zsh";
-      rebuild = "sudo nixos-rebuild switch --flake ~/nix-config#nixos";
+      rebuild =
+        "sudo nixos-rebuild switch --flake ~/nix-config#${nixosConfig.my.host.hostname}";
       ls = "eza";
       ll = "eza -lah";
       lt = "eza --tree"; # Tree view
