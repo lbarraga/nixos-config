@@ -4,8 +4,6 @@
   my.host = {
     hostname = "laptop";
 
-    waybar.persistentWorkspaces = { "*" = 10; };
-
     hyprland = {
       keyboardLayout = "be";
       primaryMonitor = "eDP-1";
