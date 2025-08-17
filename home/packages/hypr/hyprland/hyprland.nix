@@ -33,6 +33,8 @@
       "$terminal" = "kitty";
       "$fileManager" = "nnn";
       "$menu" = "pkill wofi || wofi --show drun --width 30%";
+      "$prev_song" = "playerctl -p spotify previous";
+      "$next_song" = "playerctl -p spotify next";
 
       #################
       ### AUTOSTART ###
@@ -180,6 +182,8 @@
         "$mainMod, V, togglefloating,"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
+        "$mainMod, N, exec, $next_song"
+        "$mainMod, B, exec, $prev_song"
 
         ", PRINT, exec, hyprshot -m region -o ~/Pictures/Screenshots"
         "shift, PRINT, exec, hyprshot -m window -o ~/Pictures/Screenshots"
