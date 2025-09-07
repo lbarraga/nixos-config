@@ -11,6 +11,7 @@
     gthumb
     adwaita-icon-theme
     networkmanagerapplet
+    udiskie
 
     starship
     cava

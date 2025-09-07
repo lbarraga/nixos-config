@@ -47,6 +47,7 @@
         "blueman-applet" # start bluetooth icon in tray
         "nm-applet" # network manager applet icon in tray
         "QT_STYLE_OVERRIDE=Fusion QT_QPA_PLATFORM=xcb synology-drive autostart" # synology drive quirck
+        "udiskie -t"
       ];
 
       #############################
