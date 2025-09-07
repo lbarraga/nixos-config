@@ -12,6 +12,7 @@
     adwaita-icon-theme
     networkmanagerapplet
     udiskie
+    orca-slicer
 
     starship
     cava
