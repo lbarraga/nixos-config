@@ -23,7 +23,6 @@
   home.packages = with pkgs; [
     hyprland
     kitty
-    nnn
     wofi
     hyprpaper
     hyprlock
