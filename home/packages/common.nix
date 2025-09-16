@@ -24,5 +24,7 @@
     discord
     synology-drive-client
 
+    (blender.override { cudaSupport = true; })
+
   ];
 }
