@@ -13,6 +13,7 @@
     networkmanagerapplet
     udiskie
     orca-slicer
+    xournalpp
 
     starship
     cava
