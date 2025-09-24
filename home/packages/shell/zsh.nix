@@ -13,6 +13,7 @@
       ls = "eza";
       ll = "eza -lah";
       lt = "eza --tree"; # Tree view
+      edit = "xournalpp";
     };
 
     initContent = ''
