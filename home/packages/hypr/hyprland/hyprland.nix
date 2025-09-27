@@ -48,6 +48,7 @@
         "nm-applet" # network manager applet icon in tray
         "QT_STYLE_OVERRIDE=Fusion QT_QPA_PLATFORM=xcb synology-drive autostart" # synology drive quirck
         "udiskie -t"
+        "fcitx5 -d"
       ];
 
       #############################

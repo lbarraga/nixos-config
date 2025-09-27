@@ -14,6 +14,7 @@
     udiskie
     orca-slicer
     xournalpp
+    anki
 
     starship
     cava

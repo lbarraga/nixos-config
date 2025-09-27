@@ -5,6 +5,7 @@
     ./modules/sound.nix
     ./modules/system.nix
     ./modules/bluetooth.nix
+    ./modules/input-methods.nix
     ./modules/packages/udisks.nix
     ./modules/desktop/hyprland.nix
     ./modules/packages/tailscale.nix
