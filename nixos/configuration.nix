@@ -9,6 +9,7 @@
     ./modules/packages/udisks.nix
     ./modules/desktop/hyprland.nix
     ./modules/packages/tailscale.nix
+    ./modules/packages/virtualbox.nix
     ./modules/packages/steam.nix
     ./modules/packages/mullvad.nix
   ];
