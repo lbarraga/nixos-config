@@ -15,6 +15,7 @@
     orca-slicer
     xournalpp
     anki
+    libreoffice
 
     starship
     cava
