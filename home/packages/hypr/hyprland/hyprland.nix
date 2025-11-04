@@ -235,7 +235,7 @@
         "$mainMod, mouse_up, workspace, e-1"
       ];
 
-      bindr = [ "SUPER, SUPER_L, exec, $menu" ];
+      bindr = [ "SUPER, SPACE, exec, $menu" ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = [
