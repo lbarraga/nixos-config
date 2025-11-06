@@ -1,16 +1,7 @@
 #!/usr/bin/env zsh
 
-player_status=$(playerctl -p spotify status 2>/dev/null)
+# Get artist and title (even if paused)
+artist=$(playerctl -p spotify metadata artist 2>/dev/null | sed 's/&/&amp;/g')
+title=$(playerctl -p spotify metadata title 2>/dev/null | sed 's/&/&amp;/g')
 
-if [ "$player_status" = "Playing" ]; then
-    artist=$(playerctl -p spotify metadata artist)
-    title=$(playerctl -p spotify metadata title)
-    
-    # Escape special characters for JSON
-    artist=$(echo "$artist" | sed 's/&/&amp;/g')
-    title=$(echo "$title" | sed 's/&/&amp;/g')
-    echo '{"text": "'"$artist - $title"'", "class": "custom-spotify", "alt": "Spotify"}'
-
-elif [ "$player_status" = "Paused" ]; then
-    echo '{"text": "Paused", "class": "custom-spotify", "alt": "Spotify (Paused)"}'
-fi
+echo '{ "text": "'"$artist - $title"'", "class": "custom-spotify", "alt": "Spotify"}'

@@ -13,26 +13,51 @@
 
         modules-left = [ "custom/launcher" "hyprland/workspaces" ];
         modules-center = [ "clock#time" ];
-        modules-right =
-          [ "custom/spotify" "pulseaudio" "custom/tailscale" "tray" "battery" ];
+        modules-right = [
+          "custom/spotify"
+          "custom/spotify-prev"
+          "custom/spotify-play"
+          "custom/spotify-next"
+          "pulseaudio"
+          "custom/tailscale"
+          "tray"
+          "battery"
+        ];
 
         "custom/spotify" = {
-          format = " {}";
+          format = " {text}";
           exec = "~/.config/waybar/scripts/mediaplayer.sh";
           return-type = "json";
-          interval = 3;
-          on-click = "playerctl -p spotify play-pause";
-          on-scroll-up = "playerctl -p spotify next";
-          on-scroll-down = "playerctl -p spotify previous";
-          smooth-scrolling-threshold = 10.0;
+          interval = 1;
           exec-if = "playerctl -l | grep -q spotify";
           exec-on-event = true;
         };
 
-        "hyprland/workspaces" = {
-          all-outputs = false;
-          format = "{id}";
-          show-empty = true;
+        "custom/spotify-play" = {
+          exec = "~/.config/waybar/scripts/play-pause.sh";
+          return-type = "json";
+          interval = 1;
+          format = "{text}";
+          on-click = "playerctl -p spotify play-pause";
+          exec-if = "playerctl -l | grep -q spotify";
+        };
+
+        "custom/spotify-prev" = {
+          exec = "~/.config/waybar/scripts/play-pause.sh";
+          return-type = "json";
+          interval = 1;
+          format = "";
+          on-click = "playerctl -p spotify previous";
+          exec-if = "playerctl -l | grep -q spotify";
+        };
+
+        "custom/spotify-next" = {
+          exec = "~/.config/waybar/scripts/play-pause.sh";
+          return-type = "json";
+          interval = 1;
+          format = "";
+          on-click = "playerctl -p spotify next";
+          exec-if = "playerctl -l | grep -q spotify";
         };
 
         "custom/tailscale" = {

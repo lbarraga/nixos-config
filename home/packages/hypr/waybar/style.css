@@ -152,6 +152,34 @@ window#waybar > box {
   border-radius: 6px;
 }
 
+
+
+#custom-spotify-prev,
+#custom-spotify-play,
+#custom-spotify-next {
+  background: #3b4252;
+  color: #d8dee9;
+  padding: 0 0.6em;
+  margin: 4px 0px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  border: 1px solid #434c5e; 
+  transition: background 0.2s;
+}
+
+
+#custom-spotify-prev { border-radius: 6px 0 0 6px; border-right: none; margin-left: 6px}
+#custom-spotify-play { border-radius: 0; border-left: none; border-right: none; }
+#custom-spotify-next { border-radius: 0 6px 6px 0; border-left: none; margin-right: 6px}
+
+
+#custom-spotify-prev:hover,
+#custom-spotify-play:hover,
+#custom-spotify-next:hover {
+  background: #434c5e;
+}
+
 .custom-tailscale {
   padding: 2px 12px;
   margin: 5px;
