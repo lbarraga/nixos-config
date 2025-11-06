@@ -94,7 +94,7 @@
 
         "clock#time" = {
           interval = 1;
-          format = " {:%H:%M:%S}";
+          format = "  {:%H:%M} ";
           tooltip = true;
           tooltip-format = "<big>{:%A, %B %d, %Y}</big>";
         };
