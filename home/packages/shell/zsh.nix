@@ -19,6 +19,9 @@
     initContent = ''
       eval "$(starship init zsh)"
       zstyle ':completion:*' menu select
+
+      bindkey '\e[1;5D' backward-word
+      bindkey '\e[1;5C' forward-word
     '';
 
   };
