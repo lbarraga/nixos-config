@@ -5,7 +5,10 @@
     userName = settings.userFullName;
     userEmail = settings.userEmail;
 
-    extraConfig = { init.defaultBranch = "main"; };
+    extraConfig = {
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+    };
 
     signing = {
       key = settings.gpg.keyId;
