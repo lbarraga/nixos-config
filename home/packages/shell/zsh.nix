@@ -14,6 +14,7 @@
       ll = "eza -lah";
       lt = "eza --tree"; # Tree view
       edit = "xournalpp";
+      open = "xdg-open";
     };
 
     initContent = ''
