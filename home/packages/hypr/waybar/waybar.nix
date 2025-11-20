@@ -29,6 +29,7 @@
           exec = "~/.config/waybar/scripts/mediaplayer.sh";
           return-type = "json";
           interval = 1;
+          signal = 1;
           exec-if = "playerctl -l | grep -q spotify";
           exec-on-event = true;
         };
@@ -47,7 +48,7 @@
           return-type = "json";
           interval = 1;
           format = "";
-          on-click = "playerctl -p spotify previous";
+          on-click = "playerctl -p spotify previous; pkill -RTMIN+1 waybar";
           exec-if = "playerctl -l | grep -q spotify";
         };
 
@@ -56,7 +57,7 @@
           return-type = "json";
           interval = 1;
           format = "";
-          on-click = "playerctl -p spotify next";
+          on-click = "playerctl -p spotify next; pkill -RTMIN+1 waybar";
           exec-if = "playerctl -l | grep -q spotify";
         };
 
