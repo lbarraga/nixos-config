@@ -3,13 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       # ==> EDIT THESE VALUES FOR YOUR OWN SETUP <==
       settings = {
@@ -32,11 +33,17 @@
       };
 
       mkSystem = hostname:
-        nixpkgs.lib.nixosSystem {
+        let
+          unstable_pkgs = import nixpkgs-unstable {
+            system = settings.system;
+            config.allowUnfree = true;
+          };
+        in nixpkgs.lib.nixosSystem {
           system = settings.system;
           specialArgs = {
             inputs = inputs;
             settings = settings;
+            unstable_pkgs = unstable_pkgs;
           };
           modules = [
             ./hosts/${hostname}
@@ -51,6 +58,7 @@
                 extraSpecialArgs = {
                   settings = settings;
                   nixosConfig = self.nixosConfigurations.${hostname}.config;
+                  unstable_pkgs = unstable_pkgs;
                 };
                 users.${settings.username} = import ./home;
               };
