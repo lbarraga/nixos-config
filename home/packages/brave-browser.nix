@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ unstable_pkgs, ... }:
 
 {
 
   programs.chromium = {
     enable = true;
-    package = pkgs.brave;
+    package = unstable_pkgs.brave;
     extensions = [
       { id = "dhlnjfhjjbminbjbegeiijdakdkamjoi"; } # nord theme
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
