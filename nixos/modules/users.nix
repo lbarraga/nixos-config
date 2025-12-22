@@ -16,7 +16,7 @@
   };
 
   security = {
-    sudo.wheelNeedsPassword = false;
+    sudo.wheelNeedsPassword = true;
     pam.services.hyprlock = { };
   };
 }
