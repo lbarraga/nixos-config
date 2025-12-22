@@ -1,19 +1,11 @@
 { settings, ... }:
 
 {
-  virtualisation = {
-    virtualbox = {
-      host = {
-        enable = true;
-        enableExtensionPack = true;
-      };
-      guest = {
-        enable = true;
-        dragAndDrop = true;
-      };
-    };
-  };
+  programs.virt-manager.enable = true;
 
-  users.extraGroups.vboxusers.members = [ "${settings.username}" ];
+  users.groups.libvirtd.members = [ settings.username ];
+
+  virtualisation.libvirtd.enable = true;
+
+  virtualisation.spiceUSBRedirection.enable = true;
 }
-
