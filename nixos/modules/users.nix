@@ -11,7 +11,7 @@
   users.users.${settings.username} = {
     isNormalUser = true;
     description = settings.userFullName;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "plugdev" ];
     shell = pkgs.zsh;
   };
 
