@@ -32,7 +32,7 @@
       ###################
       "$terminal" = "kitty";
       "$fileManager" = "nnn";
-      "$menu" = "pkill wofi || wofi --show drun --width 30%";
+      "$menu" = "pkill rofi || rofi -show drun";
       "$prev_song" = "playerctl -p spotify previous";
       "$next_song" = "playerctl -p spotify next";
       "$pauze_song" = "playerctl -p spotify play-pause";

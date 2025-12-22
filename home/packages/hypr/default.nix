@@ -16,14 +16,14 @@
       find ${./waybar} -type f -name '*.sh' -exec chmod +x {} \;
     '';
 
-  home.file.".config/wofi".source = ./wofi;
+  home.file.".config/rofi".source = ./rofi;
   home.file.".config/kitty".source = ./kitty;
 
   # Install needed packages
   home.packages = with pkgs; [
     hyprland
     kitty
-    wofi
+    rofi-wayland
     hyprpaper
     hyprlock
     waybar
