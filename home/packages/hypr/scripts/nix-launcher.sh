@@ -50,6 +50,8 @@ else
   LIST=$(cat "$HISTORY_FILE")
 fi
 
+set +e
+
 # Launch Rofi
 # We unbind alt-accept so Shift+Return can be used for custom-1
 PKG=$(echo "$LIST" | rofi -dmenu \
@@ -65,6 +67,8 @@ if [ -z "$PKG" ]; then
   exit 0
 fi
 
+set -e
+
 # --- History Management ---
 
 # Remove package from history if it exists, then add to top
@@ -77,7 +81,7 @@ rm "$HISTORY_FILE.tmp"
 if [ "$EXIT_CODE" -eq 10 ]; then
   # Mode 1: Terminal (Shift+Enter)
   # Note: We quote $PKG inside the sh -c string to keep shellcheck happy and safe
-  kitty --title "Nix Run: $PKG" sh -c "echo 'Fetching $PKG...'; nix run nixpkgs#\"$PKG\"; echo ''; echo 'Press Enter to exit...'; read -r"
+  kitty --title "Nix Run: $PKG" sh -c "echo 'Fetching $PKG...'; nix run nixpkgs#\"$PKG\"; echo '';"
 else
   # Mode 2: Silent (Enter)
   notify-send "Nix Run" "Fetching and launching $PKG..."
