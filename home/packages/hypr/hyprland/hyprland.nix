@@ -33,6 +33,7 @@
       "$terminal" = "kitty";
       "$fileManager" = "nnn";
       "$menu" = "pkill rofi || rofi -show drun";
+      "$nix-menu" = "pkill rofi || nix-run-app";
       "$prev_song" = "playerctl -p spotify previous";
       "$next_song" = "playerctl -p spotify next";
       "$pauze_song" = "playerctl -p spotify play-pause";
@@ -233,9 +234,12 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+
+        "$mainMod, SPACE, exec, $menu"
+        "$mainMod ALT, SPACE, exec, $nix-menu"
       ];
 
-      bindr = [ "SUPER, SPACE, exec, $menu" ];
+      bindr = [ ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = [

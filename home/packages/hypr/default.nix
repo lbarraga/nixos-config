@@ -1,6 +1,12 @@
 { pkgs, lib, ... }:
 
-{
+let
+  # Create a derivation that includes your script and its dependencies
+  nix-run-script = pkgs.writeShellApplication {
+    name = "nix-run-app";
+    text = builtins.readFile ./scripts/nix-launcher.sh;
+  };
+in {
 
   imports =
     [ ./hyprland/hyprland.nix ./waybar/waybar.nix ./hyprpaper/hyprpaper.nix ];
@@ -34,6 +40,7 @@
     hyprcursor
     playerctl
     brightnessctl
+    nix-run-script
   ];
 }
 
