@@ -83,7 +83,7 @@ export NIXPKGS_ALLOW_UNFREE=1
 if [ "$EXIT_CODE" -eq 10 ]; then
   # Mode 1: Terminal (Shift+Enter)
   # Note: We quote $PKG inside the sh -c string to keep shellcheck happy and safe
-  kitty --title "Nix Run: $PKG" sh -c "echo 'Fetching $PKG...'; nix run --impure nixpkgs#\"$PKG\"; echo '';"
+  kitty --title "Nix Run: $PKG" sh -c "echo 'Fetching $PKG...'; nix run --impure nixpkgs#\"$PKG\"; echo ''; exec $SHELL"
 else
   # Mode 2: Silent (Enter)
   notify-send "Nix Run" "Fetching and launching $PKG..."
