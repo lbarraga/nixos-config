@@ -2,6 +2,7 @@
   imports = [
     ./modules/users.nix
     ./modules/bootloader.nix
+    ./modules/printing.nix
     ./modules/sound.nix
     ./modules/system.nix
     ./modules/bluetooth.nix
