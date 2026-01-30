@@ -8,9 +8,16 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs =
+    { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, ... }@inputs:
     let
       # ==> EDIT THESE VALUES FOR YOUR OWN SETUP <==
       settings = {
@@ -48,6 +55,8 @@
           modules = [
             ./hosts/${hostname}
             ./nixos/modules/options.nix
+
+            sops-nix.nixosModules.sops
 
             home-manager.nixosModules.home-manager
             {

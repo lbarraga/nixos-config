@@ -1,0 +1,18 @@
+keys:
+  - &lukas_yubikey 7D7927AE9E9E61C7736EE6A8D78940BF1814BF2E
+  - &machine_key age1w2945tqxz6sftjuc9dg5rt7pf9dkwd924eeuks6346c3sxg00fqs2ay5et
+
+creation_rules:
+  - path_regex: hosts/.+/secrets\.yaml$
+    key_groups:
+      - pgp:
+          - *lukas_yubikey
+        age:
+          - *machine_key
+
+  - path_regex: secrets/global\.yaml$
+    key_groups:
+      - pgp:
+          - *lukas_yubikey
+        age:
+          - *machine_key

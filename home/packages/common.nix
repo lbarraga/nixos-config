@@ -16,6 +16,7 @@
     xournalpp
     anki
     libreoffice
+    sops
 
     starship
     cava
