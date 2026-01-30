@@ -3,6 +3,8 @@
 {
   environment.systemPackages = [ unstable_pkgs.fosrl-olm ];
 
+  networking.firewall = { trustedInterfaces = [ "olm" ]; };
+
   sops.secrets."olm_env" = { restartUnits = [ "olm.service" ]; };
 
   systemd.services.olm = {
