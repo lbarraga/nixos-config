@@ -19,7 +19,7 @@
           "custom/spotify-play"
           "custom/spotify-next"
           "pulseaudio"
-          "custom/tailscale"
+          "custom/pangolin"
           "tray"
           "battery"
         ];
@@ -61,9 +61,9 @@
           exec-if = "playerctl -l | grep -q spotify";
         };
 
-        "custom/tailscale" = {
+        "custom/pangolin" = {
           format = "{}";
-          exec = "~/.config/waybar/scripts/tailscale.sh";
+          exec = "~/.config/waybar/scripts/pangolin.sh";
           return-type = "json";
           interval = 5;
         };

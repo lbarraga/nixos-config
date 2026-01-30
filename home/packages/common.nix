@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, unstable_pkgs, ... }: {
   home.packages = with pkgs; [
     htop
     btop
@@ -29,6 +29,8 @@
     synology-drive-client
 
     (blender.override { cudaSupport = true; })
+
+    unstable_pkgs.pangolin-cli
 
   ];
 }
