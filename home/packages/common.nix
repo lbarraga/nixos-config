@@ -28,8 +28,6 @@
     discord
     synology-drive-client
 
-    (blender.override { cudaSupport = true; })
-
     unstable_pkgs.pangolin-cli
 
   ];
