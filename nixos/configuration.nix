@@ -15,5 +15,6 @@
     ./modules/packages/steam.nix
     ./modules/packages/mullvad.nix
     ./modules/packages/olm.nix
+    ./modules/packages/pcscd.nix
   ];
 }

@@ -10,6 +10,7 @@ in {
     gnupg
     pinentry-curses # or gtk/qt depending on your DE
     yubikey-manager
+    yubioath-flutter
   ];
 
   services.gpg-agent = {
