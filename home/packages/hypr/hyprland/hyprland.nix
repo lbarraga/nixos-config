@@ -39,7 +39,7 @@
       "$pauze_song" = "playerctl -p spotify play-pause";
 
       #################
-      ### AUTOSTART ###
+      ### AUTOSTART###
       #################
       "exec-once" = [
         "hyprpaper"
@@ -189,6 +189,7 @@
         "$mainMod, N, exec, $next_song"
         "$mainMod, B, exec, $prev_song"
         "$mainMod, H, exec, $pauze_song"
+        "$mainMod, F, fullscreen"
 
         ", PRINT, exec, hyprshot -m region -o ~/Pictures/Screenshots"
         "shift, PRINT, exec, hyprshot -m window -o ~/Pictures/Screenshots"
