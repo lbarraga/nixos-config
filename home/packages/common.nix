@@ -28,6 +28,9 @@
     discord
     synology-drive-client
 
+    pavucontrol
+    qpwgraph
+
     unstable_pkgs.pangolin-cli
 
   ];
