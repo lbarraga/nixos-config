@@ -2,6 +2,8 @@
   networking.hostName = config.my.host.hostname;
   networking.networkmanager.enable = true;
 
+  services.resolved.enable = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
