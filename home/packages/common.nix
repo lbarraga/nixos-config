@@ -4,7 +4,7 @@
     btop
     killall
     tree
-    neofetch
+    fastfetch
     gcc
     nodejs_20
     unzip
