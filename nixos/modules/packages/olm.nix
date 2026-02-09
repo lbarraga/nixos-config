@@ -13,7 +13,8 @@
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
-      ExecStart = "${unstable_pkgs.fosrl-olm}/bin/olm";
+      ExecStart =
+        "${unstable_pkgs.fosrl-olm}/bin/olm --override-dns --tunnel-dns";
       EnvironmentFile = config.sops.secrets."olm_env".path;
 
       Restart = "always";
