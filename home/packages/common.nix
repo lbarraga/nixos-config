@@ -23,7 +23,7 @@
     vlc
 
     obsidian
-    stremio
+    # stremio
     spotify
     discord
     synology-drive-client

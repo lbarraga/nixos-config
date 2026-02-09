@@ -166,7 +166,7 @@
         numlock_by_default = true;
       };
 
-      gestures = { workspace_swipe = true; };
+      "gesture" = "3, horizontal, workspace";
 
       device = [{
         name = "epic-mouse-v1";

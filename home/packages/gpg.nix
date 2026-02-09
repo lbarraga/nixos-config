@@ -29,6 +29,4 @@ in {
     echo "Setting ultimate trust..."
     echo "${settings.gpg.fingerprint}:6:" | ${pkgs.gnupg}/bin/gpg --import-ownertrust
   '';
-
-  programs.ssh.enable = true;
 }

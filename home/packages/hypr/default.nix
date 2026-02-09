@@ -29,7 +29,7 @@ in {
   home.packages = with pkgs; [
     hyprland
     kitty
-    rofi-wayland
+    rofi
     hyprpaper
     hyprlock
     waybar
