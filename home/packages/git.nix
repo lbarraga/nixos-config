@@ -5,7 +5,7 @@
     settings = {
 
       user = {
-        email = settings.userFullName;
+        email = settings.userEmail;
         name = settings.userFullName;
       };
 
