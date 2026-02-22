@@ -11,7 +11,6 @@
     ./packages/gpg.nix
     ./packages/fonts.nix
     ./packages/shell/zsh.nix
-    ./packages/thunar.nix
     ./packages/shell/starship.nix
     ./packages/hypr
     ./packages/dev
