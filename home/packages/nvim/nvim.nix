@@ -11,6 +11,7 @@
       cargo # for the Nix LSP
       luarocks
       fish # here to make health check have less warnings
+      sshfs
 
       git
       lazygit
