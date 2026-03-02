@@ -12,6 +12,7 @@
     ./packages/fonts.nix
     ./packages/shell/zsh.nix
     ./packages/shell/starship.nix
+    ./packages/xdg.nix
     ./packages/hypr
     ./packages/dev
   ];
