@@ -3,10 +3,8 @@
 {
   flake.modules.nixos.laptop = {
 
-    imports = [
-      inputs.self.modules.nixos.lukas-desktop # The exact same bundle as the desktop!
-      ./_hardware-configuration.nix # The laptop's specific hardware
-    ];
+    imports =
+      [ inputs.self.modules.nixos.lukas-desktop ./_hardware-configuration.nix ];
 
     networking.hostName = "laptop";
 

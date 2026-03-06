@@ -1,5 +1,3 @@
-{ inputs, ... }:
-
 {
   flake.modules.homeManager.hyprland-hyprpaper = {
     services.hyprpaper = {

@@ -10,10 +10,20 @@
       };
       hyprland = {
         keyboardLayout = lib.mkOption { type = lib.types.str; };
-        primaryMonitor = lib.mkOption { type = lib.types.str; };
-        monitors = lib.mkOption { type = lib.types.listOf lib.types.str; };
+        primaryMonitor = lib.mkOption {
+          type = lib.types.str;
+          default = ""; # Add a default here too if you plan to omit it
+        };
+        monitors = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = [ ]; # Default to an empty list
+          description =
+            "List of monitor configs. Leave empty for generic fallback.";
+        };
         workspaces = lib.mkOption {
           type = lib.types.attrsOf (lib.types.listOf lib.types.int);
+          default = { }; # Default to an empty attribute set
+          description = "Workspace bindings. Leave empty for generic fallback.";
         };
       };
     };
@@ -47,7 +57,6 @@
 
       services.xserver.enable = false;
 
-      # Inject the HM configuration for any user on this host
       home-manager.sharedModules = [ inputs.self.modules.homeManager.hyprland ];
     };
   };
@@ -66,17 +75,9 @@
         hyprland-hyprpaper
       ];
 
-      home.file.".config/hypr/hyprlock.conf".text =
-        builtins.readFile ./hyprlock.conf;
-
-      home.file.".config/hypr/wallpaper.jpg".source = ./wallpaper.jpg;
-
+      home.file.".config/hypr/hyprlock.conf".source = ./hyprlock/hyprlock.conf;
+      home.file.".config/hypr/wallpaper.jpg".source = ./hyprpaper/wallpaper.jpg;
       home.file.".config/waybar/scripts".source = ./scripts;
-      home.activation.makeWaybarScriptsExecutable =
-        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          find ${./scripts} -type f -name '*.sh' -exec chmod +x {} \;
-        '';
-
       home.file.".config/rofi".source = ./rofi;
       home.file.".config/kitty".source = ./kitty;
 
