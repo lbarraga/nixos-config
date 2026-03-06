@@ -1,35 +1,34 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 
 {
-  # Define the architectures your flake supports
-  systems = [ "x86_64-linux" ];
+  flake.modules.nixos.core = { config, ... }: {
 
-  imports = [ inputs.flake-parts.flakeModules.modules ];
+    # Bootloader
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
-  flake.lib = {
+    # Networking basics (hostname is defined in the specific host feature)
+    networking.networkmanager.enable = true;
+    services.resolved.enable = true;
 
-    # The mkNixos helper function as described in the Dendritic guide
-    mkNixos = system: name: {
-      ${name} = inputs.nixpkgs.lib.nixosSystem {
-        inherit system;
+    # Nix and System settings
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nixpkgs.config.allowUnfree = true;
+    system.stateVersion = "25.05";
 
-        # Pass inputs to all NixOS modules so they can access inputs.self.modules
-        specialArgs = { inherit inputs; };
+    # Time and Locale
+    time.timeZone = "Europe/Brussels";
+    i18n.defaultLocale = "nl_BE.UTF-8";
 
-        modules = [
-          # 1. The top-level feature module for the specific host
-          inputs.self.modules.nixos.${name}
+    # SOPS Configuration
+    sops = {
+      age.keyFile = "/var/lib/sops-nix/key.txt";
 
-          # 2. Set the host platform unconditionally
-          {
-            nixpkgs.hostPlatform = lib.mkDefault system;
-          }
-
-          # 3. Inject global framework modules so they are available in all NixOS contexts
-          inputs.home-manager.nixosModules.home-manager
-          inputs.sops-nix.nixosModules.sops
-        ];
-      };
+      # Dynamically point to the host's secrets.yaml using inputs.self (the root of the flake)
+      # This relies on config.networking.hostName being set in the host module (e.g., desktop.nix)
+      defaultSopsFile =
+        "${inputs.self}/modules/hosts/${config.networking.hostName}/secrets.yaml";
+      defaultSopsFormat = "yaml";
     };
 
   };

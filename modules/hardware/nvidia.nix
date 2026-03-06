@@ -1,6 +1,6 @@
-{ config, ... }: {
+{
 
-  flake.modules.nixos.nvidia = {
+  flake.modules.nixos.nvidia = { config, ... }: {
     # Enable OpenGL
     hardware.graphics = { enable = true; };
 
