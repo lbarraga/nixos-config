@@ -9,6 +9,7 @@
 
       # Hardware
       nvidia
+      ignore-laptop-lid
 
       # Connectivity
       ssh-server
