@@ -4,7 +4,7 @@
   flake.modules.nixos.desktop = {
 
     imports = with inputs.self.modules.nixos;
-      [ lukas-desktop nvidia ] ++ [ ./_hardware-configuration.nix ];
+      [ lukas-desktop nvidia llm ] ++ [ ./_hardware-configuration.nix ];
 
     networking.hostName = "desktop";
 
