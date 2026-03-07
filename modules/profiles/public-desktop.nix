@@ -16,6 +16,7 @@
       bluetooth
       printing
       sound
+      nvim
     ];
   };
 }
