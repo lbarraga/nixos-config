@@ -8,6 +8,7 @@
       lukasbt
       yubikey
       git
+      embedded-dev
       ssh
       tailscale
       personal
