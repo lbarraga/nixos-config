@@ -9,7 +9,6 @@
         "networkmanager"
         "wheel"
         "dialout"
-        "plugdev"
       ];
 
       openssh.authorizedKeys.keys = [
