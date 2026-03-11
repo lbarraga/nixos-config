@@ -3,8 +3,15 @@
 {
   flake.modules.nixos.desktop = {
 
-    imports = with inputs.self.modules.nixos;
-      [ lukas-desktop nvidia llm ] ++ [ ./_hardware-configuration.nix ];
+    imports =
+      with inputs.self.modules.nixos;
+      [
+        lukas-desktop
+        nvidia
+        llm
+        gaming
+      ]
+      ++ [ ./_hardware-configuration.nix ];
 
     networking.hostName = "desktop";
 
@@ -19,9 +26,22 @@
           "HDMI-A-1,1920x1080@144,auto-right,1"
         ];
         workspaces = {
-          "DP-1" = [ 1 2 3 ];
-          "DP-2" = [ 4 5 6 7 ];
-          "HDMI-A-1" = [ 8 9 10 ];
+          "DP-1" = [
+            1
+            2
+            3
+          ];
+          "DP-2" = [
+            4
+            5
+            6
+            7
+          ];
+          "HDMI-A-1" = [
+            8
+            9
+            10
+          ];
         };
       };
     };
