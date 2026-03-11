@@ -20,6 +20,9 @@
         key = "39FD4F630877B4D1";
         signByDefault = true;
       };
+      aliases = {
+        ac = "!git add . && git commit -m";
+      };
     };
   };
 }
