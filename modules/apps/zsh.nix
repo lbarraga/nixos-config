@@ -21,7 +21,6 @@
 
           shellAliases = {
             nix-shell = "nix-shell --run zsh";
-            rebuild = "sudo nixos-rebuild switch --flake ~/nix-config#${osConfig.networking.hostName}";
             ls = "eza";
             ll = "eza -lah";
             lt = "eza --tree";
