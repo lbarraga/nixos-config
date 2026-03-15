@@ -1,43 +1,37 @@
-{ inputs, ... }: {
-  flake.modules.nixos.vm = { config, lib, pkgs, modulesPath, ... }: {
-    imports = with inputs.self.modules.nixos; [
-      public-desktop
-      guest
+{ den, ... }:
+{
+  # 1. Register the VM and assign the "guest" user to it
+  den.hosts.x86_64-linux.vm.users.guest = { };
 
-      # standard NixOS QEMU guest optimizations
-      (modulesPath + "/profiles/qemu-guest.nix")
+  den.aspects.vm = {
+    # 2. Include the shared graphical role
+    includes = with den.aspects; [
+      workstation
     ];
 
-    networking.hostName = "vm";
+    # 3. VM-specific NixOS settings and QEMU optimizations
+    nixos =
+      { modulesPath, ... }:
+      {
+        imports = [
+          (modulesPath + "/profiles/qemu-guest.nix")
+        ];
 
-    my.host = {
-      defaultUser = "guest";
-      hyprland = {
-        keyboardLayout = "us";
-        primaryMonitor = "Virtual-1"; # Belangrijk voor QEMU
-        monitors = [ "Virtual-1,1920x1080@60,0x0,1" ];
-        workspaces = { "Virtual-1" = [ 1 2 3 4 5 6 7 8 9 10 ]; };
+        networking.hostName = "vm";
+
+        # SPICE support for better VM interaction
+        services.spice-vdagentd.enable = true;
+        boot.loader.grub.gfxmodeBios = "1920x1080";
+
+        virtualisation.vmVariant = {
+          virtualisation.qemu.options = [
+            "-device virtio-vga-gl"
+            "-display gtk,gl=on"
+          ];
+          virtualisation.diskSize = 20480;
+          virtualisation.memorySize = 4096;
+          virtualisation.cores = 4;
+        };
       };
-    };
-
-    environment.variables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-      WLR_RENDERER_ALLOW_SOFTWARE = "1";
-    };
-
-    services.spice-vdagentd.enable = true;
-
-    boot.loader.grub.gfxmodeBios = "1920x1080";
-
-    virtualisation.vmVariant = {
-      virtualisation.qemu.options =
-        [ "-device virtio-vga-gl" "-display gtk,gl=on" ];
-      virtualisation.diskSize = 20480;
-      virtualisation.memorySize = 4096;
-      virtualisation.cores = 4;
-    };
   };
-
-  flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "vm";
-
 }

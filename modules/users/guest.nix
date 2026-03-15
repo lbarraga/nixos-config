@@ -1,13 +1,15 @@
 {
-  flake.modules.nixos.guest = { config, ... }: {
-
-    users.users.guest = {
+  den.aspects.user-guest = {
+    nixos.users.users.guest = {
       isNormalUser = true;
       description = "Guest User";
-      extraGroups = [ "networkmanager" "video" "audio" ];
+      extraGroups = [
+        "networkmanager"
+        "video"
+        "audio"
+      ];
       initialPassword = "nixos";
     };
-
-    home-manager.users.guest = { pkgs, ... }: { home.stateVersion = "25.05"; };
+    homeManager.home.stateVersion = "25.05";
   };
 }

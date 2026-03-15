@@ -1,7 +1,9 @@
 {
-  flake.modules.nixos.bluetooth = {
-    services.blueman.enable = true;
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.powerOnBoot = true;
+  den.aspects.bluetooth = {
+    nixos = {
+      services.blueman.enable = true;
+      hardware.bluetooth.enable = true;
+      hardware.bluetooth.powerOnBoot = true;
+    };
   };
 }

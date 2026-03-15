@@ -1,8 +1,6 @@
 {
-  flake.modules.nixos.ssh-server = {
-
-    # Enable the OpenSSH daemon
-    services.openssh = {
+  den.aspects.ssh-server = {
+    nixos.services.openssh = {
       enable = true;
       settings = {
         PasswordAuthentication = false;

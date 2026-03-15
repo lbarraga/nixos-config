@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.gaming = {
-    programs.steam.enable = true;
+  den.aspects.gaming = {
+    nixos.programs.steam.enable = true;
   };
 }

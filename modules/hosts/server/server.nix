@@ -1,30 +1,19 @@
-{ inputs, ... }:
-
+{ den, ... }:
 {
-  flake.modules.nixos.server = {
-    imports = with inputs.self.modules.nixos; [
-      # Base System
-      core
-      ./_hardware-configuration.nix
+  den.hosts.x86_64-linux.server.users.lukasbt = { };
 
-      # Hardware
+  den.aspects.server = {
+    includes = with den.aspects; [
+      core
       nvidia
       ignore-laptop-lid
-
-      # Connectivity
       ssh-server
-      # tailscale
-
-      # User & Apps
-      lukasbt
-      shell
-      cli-tools
-      git
-      nvim
+      tailscale
     ];
 
-    networking.hostName = "server";
+    nixos = {
+      imports = [ ./_hardware-configuration.nix ];
+      networking.hostName = "server";
+    };
   };
-
-  flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "server";
 }

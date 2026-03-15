@@ -1,15 +1,8 @@
-{ inputs, ... }:
-
 {
-  flake.modules.nixos.ssh = {
-    home-manager.sharedModules = [ inputs.self.modules.homeManager.ssh ];
-  };
-
-  flake.modules.homeManager.ssh = {
-    programs.ssh = {
+  den.aspects.ssh = {
+    homeManager.programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-
       # https://github.com/nix-community/home-manager/blob/0d782ee42c86b196acff08acfbf41bb7d13eed5b/modules/programs/ssh.nix#L555-L578
       matchBlocks."*" = {
         forwardAgent = false;

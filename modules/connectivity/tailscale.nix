@@ -1,6 +1,10 @@
 {
-  flake.modules.nixos.tailscale = { pkgs, ... }: {
-    environment.systemPackages = [ pkgs.tailscale ];
-    services.tailscale.enable = false;
+  den.aspects.tailscale = {
+    nixos =
+      { pkgs, ... }:
+      {
+        environment.systemPackages = [ pkgs.tailscale ];
+        services.tailscale.enable = false;
+      };
   };
 }

@@ -1,6 +1,6 @@
 {
-  flake.modules.nixos.ignore-laptop-lid = {
-    services.logind = {
+  den.aspects.ignore-laptop-lid = {
+    nixos.services.logind = {
       lidSwitch = "ignore";
       lidSwitchExternalPower = "ignore";
       lidSwitchDocked = "ignore";

@@ -1,7 +1,6 @@
 {
-  flake.modules.nixos.embedded-dev =
-    { pkgs, ... }:
-    {
+  den.aspects.embedded-dev = {
+    nixos = {
       users.groups.plugdev = { };
       users.users.lukasbt.extraGroups = [ "plugdev" ];
 
@@ -9,4 +8,5 @@
         SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="000c", MODE="0660", GROUP="users", TAG+="uaccess"
       '';
     };
+  };
 }

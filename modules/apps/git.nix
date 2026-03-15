@@ -1,12 +1,6 @@
-{ inputs, ... }:
-
 {
-  flake.modules.nixos.git = {
-    home-manager.sharedModules = [ inputs.self.modules.homeManager.git ];
-  };
-
-  flake.modules.homeManager.git = {
-    programs.git = {
+  den.aspects.git = {
+    homeManager.programs.git = {
       enable = true;
       settings = {
         user = {
