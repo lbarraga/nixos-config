@@ -17,7 +17,7 @@
         services.gpg-agent = {
           enable = true;
           enableSshSupport = true;
-          pinentryPackage = pkgs.pinentry-curses;
+          pinentry.package = pkgs.pinentry-curses;
         };
 
         # Script to import your GPG public key and set ultimate trust
