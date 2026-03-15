@@ -1,5 +1,4 @@
-{ den, ... }:
-{
+{den, ...}: {
   den.aspects.workstation = {
     includes = with den.aspects; [
       # Common System / Hardware
@@ -24,7 +23,6 @@
       nvim
       zsh
       nh
-
     ];
   };
 }

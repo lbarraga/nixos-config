@@ -1,6 +1,9 @@
-{ inputs, lib, ... }:
 {
-  imports = [ inputs.den.flakeModule ];
+  inputs,
+  lib,
+  ...
+}: {
+  imports = [inputs.den.flakeModule];
 
-  den.schema.user.classes = lib.mkDefault [ "homeManager" ];
+  den.schema.user.classes = lib.mkDefault ["homeManager"];
 }

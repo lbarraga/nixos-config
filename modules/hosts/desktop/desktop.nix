@@ -1,6 +1,5 @@
-{ den, ... }:
-{
-  den.hosts.x86_64-linux.desktop.users.lukasbt = { };
+{den, ...}: {
+  den.hosts.x86_64-linux.desktop.users.lukasbt = {};
 
   den.aspects.desktop = {
     includes = with den.aspects; [
@@ -14,7 +13,7 @@
     ];
 
     nixos = {
-      imports = [ ./_hardware-configuration.nix ];
+      imports = [./_hardware-configuration.nix];
       networking.hostName = "desktop";
     };
   };

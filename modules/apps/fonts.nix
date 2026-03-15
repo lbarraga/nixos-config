@@ -1,12 +1,10 @@
 {
   den.aspects.fonts = {
-    homeManager =
-      { pkgs, ... }:
-      {
-        home.packages = with pkgs; [
-          font-awesome
-          nerd-fonts.jetbrains-mono
-        ];
-      };
+    homeManager = {pkgs, ...}: {
+      home.packages = with pkgs; [
+        font-awesome
+        nerd-fonts.jetbrains-mono
+      ];
+    };
   };
 }

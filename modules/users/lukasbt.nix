@@ -1,7 +1,6 @@
-{ den, ... }:
-{
+{den, ...}: {
   den.aspects.lukasbt = {
-    includes = [ den.provides.define-user ];
+    includes = [den.provides.define-user];
     nixos = {
       users.users.lukasbt = {
         isNormalUser = true;
