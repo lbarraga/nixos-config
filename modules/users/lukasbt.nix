@@ -1,5 +1,7 @@
+{ den, ... }:
 {
   den.aspects.lukasbt = {
+    includes = [ den.provides.define-user ];
     nixos = {
       users.users.lukasbt = {
         isNormalUser = true;
@@ -16,8 +18,6 @@
     };
 
     homeManager = {
-      home.username = "lukasbt";
-      home.homeDirectory = "/home/lukasbt";
       programs.home-manager.enable = true;
       home.stateVersion = "25.05";
     };
