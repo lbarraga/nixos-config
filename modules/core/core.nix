@@ -19,6 +19,8 @@
         nixpkgs.config.allowUnfree = true;
         system.stateVersion = "25.05";
 
+        programs.nh.enable = true;
+
         programs.nix-ld = {
           enable = true;
           libraries = options.programs.nix-ld.libraries.default;
