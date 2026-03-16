@@ -17,7 +17,7 @@
       # cli
       cli-tools
       nh
-      neovim
+      nvim
       zsh
     ];
 
