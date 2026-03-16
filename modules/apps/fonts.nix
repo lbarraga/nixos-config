@@ -1,10 +1,16 @@
 {
   den.aspects.fonts = {
-    homeManager = {pkgs, ...}: {
-      home.packages = with pkgs; [
-        font-awesome
-        nerd-fonts.jetbrains-mono
-      ];
-    };
+    nixos =
+      { pkgs, ... }:
+      {
+        fonts.packages = with pkgs; [
+          noto-fonts-cjk-sans
+          noto-fonts-color-emoji
+          font-awesome
+          nerd-fonts.jetbrains-mono
+        ];
+
+        fonts.enableDefaultPackages = true;
+      };
   };
 }
