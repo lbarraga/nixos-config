@@ -16,6 +16,7 @@
 
       # cli
       cli-tools
+      git
       nh
       nvim
       zsh
