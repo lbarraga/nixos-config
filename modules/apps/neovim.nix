@@ -1,6 +1,6 @@
 {
   den.aspects.nvim = {
-    homeManager = {pkgs, ...}: {
+    homeManager = { pkgs, ... }: {
       programs.neovim = {
         enable = true;
         defaultEditor = true;
@@ -19,6 +19,7 @@
           ripgrep
           fd
           wl-clipboard
+          alejandra
           nodejs
           python3
           cargo
