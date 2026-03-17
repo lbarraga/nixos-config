@@ -1,6 +1,6 @@
 {
   den.aspects.nvim = {
-    homeManager = { pkgs, ... }: {
+    homeManager = {pkgs, ...}: {
       programs.neovim = {
         enable = true;
         defaultEditor = true;
