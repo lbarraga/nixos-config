@@ -1,26 +1,33 @@
-{
+let
+  myExtensions = pkgs:
+    with pkgs.gnomeExtensions; [
+      appindicator
+      gnome-40-ui-improvements
+      blur-my-shell
+      dash-to-dock
+      just-perfection
+    ];
+in {
   den.aspects.gnome = {
     nixos = {pkgs, ...}: {
-      # Enable the X11 windowing system
       services.xserver.enable = true;
-
       services.displayManager.gdm.enable = true;
       services.desktopManager.gnome.enable = true;
 
-      # dont want this
       environment.gnome.excludePackages = with pkgs; [
         gnome-tour
-        epiphany # web browser
-        geary # email reader
+        epiphany
+        geary
       ];
 
-      environment.systemPackages = with pkgs; [
-        gnome-tweaks
-        gnomeExtensions.appindicator
-      ];
+      environment.systemPackages =
+        [
+          pkgs.gnome-tweaks
+        ]
+        ++ (myExtensions pkgs);
     };
 
-    homeManager = {
+    homeManager = {pkgs, ...}: {
       dconf.settings = {
         "org/gnome/desktop/interface" = {
           font-name = "JetBrainsMono Nerd Font 11";
@@ -31,9 +38,11 @@
         "org/gnome/shell" = {
           disable-user-extensions = false;
           disabled-extensions = [];
-          enabled-extensions = [
-            "appindicatorsupport@rgcjonas.gmail.com"
-          ];
+          enabled-extensions = map (ext: ext.extensionUuid) (myExtensions pkgs);
+        };
+
+        "org/gnome/shell/extensions/just-perfection" = {
+          dash = false;
         };
       };
     };
