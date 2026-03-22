@@ -16,7 +16,6 @@
 
       environment.systemPackages = with pkgs; [
         gnome-tweaks
-        gnomeExtensions.dash-to-dock
         gnomeExtensions.appindicator
       ];
     };
@@ -33,7 +32,7 @@
           disable-user-extensions = false;
           disabled-extensions = [];
           enabled-extensions = [
-            "appindicator@atareao.it"
+            "appindicatorsupport@rgcjonas.gmail.com"
           ];
         };
       };
