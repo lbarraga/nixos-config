@@ -6,6 +6,7 @@ let
       blur-my-shell
       just-perfection
       space-bar
+      forge
     ];
 in {
   den.aspects.gnome = {
@@ -46,7 +47,7 @@ in {
         };
 
         "org/gnome/mutter" = {
-          dynamic-workspaces = true;
+          dynamic-workspaces = false;
           audible-bell = false;
         };
 
