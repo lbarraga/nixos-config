@@ -7,6 +7,7 @@ let
       just-perfection
       space-bar
       forge
+      launch-new-instance
     ];
 in {
   den.aspects.gnome = {
@@ -35,7 +36,9 @@ in {
           document-font-name = "JetBrainsMono Nerd Font 11";
           monospace-font-name = "JetBrainsMono Nerd Font 10";
           titlebar-font = "JetBrainsMono Nerd Font Bold 11";
+          accent-color = "slate";
         };
+
         "org/gnome/shell" = {
           disable-user-extensions = false;
           disabled-extensions = [];
@@ -84,6 +87,12 @@ in {
           switch-to-workspace-9 = ["<Super>9"];
 
           close = ["<Super>q"];
+        };
+
+        "org/gnome/shell/extensions/forge" = {
+          window-gap-hidden-on-single = true;
+          quick-settings-enabled = false;
+          focus-on-hover-enabled = true;
         };
       };
     };
