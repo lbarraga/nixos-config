@@ -8,6 +8,7 @@ let
       space-bar
       forge
       launch-new-instance
+      status-area-horizontal-spacing
     ];
 in {
   den.aspects.gnome = {
