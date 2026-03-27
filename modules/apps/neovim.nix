@@ -19,6 +19,7 @@
           ripgrep
           fd
           wl-clipboard
+          xclip
           alejandra
           nodejs
           python3

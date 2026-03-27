@@ -9,7 +9,6 @@
         fastfetch
         unzip
         sops
-        wl-clipboard
       ];
 
       programs.eza = {
