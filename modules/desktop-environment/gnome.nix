@@ -6,7 +6,6 @@ let
       blur-my-shell
       just-perfection
       space-bar
-      forge
       launch-new-instance
       status-area-horizontal-spacing
     ];
@@ -52,11 +51,11 @@ in {
 
         "org/gnome/mutter" = {
           dynamic-workspaces = false;
-          audible-bell = false;
         };
 
         "org/gnome/desktop/wm/preferences" = {
           num-workspaces = 9;
+          audible-bell = false;
         };
 
         "org/gnome/shell/keybindings" = {
@@ -88,12 +87,6 @@ in {
           switch-to-workspace-9 = ["<Super>9"];
 
           close = ["<Super>q"];
-        };
-
-        "org/gnome/shell/extensions/forge" = {
-          window-gap-hidden-on-single = true;
-          quick-settings-enabled = false;
-          focus-on-hover-enabled = true;
         };
       };
     };
