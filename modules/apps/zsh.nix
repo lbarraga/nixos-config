@@ -1,14 +1,13 @@
-{
+{den, ...}: {
   den.aspects.zsh = {
+    includes = [den.aspects.starship];
+
     nixos = {pkgs, ...}: {
       programs.zsh.enable = true;
       users.defaultUserShell = pkgs.zsh;
     };
 
     homeManager = {osConfig, ...}: {
-      programs.starship.enable = true;
-      home.file.".config/starship.toml".source = ./starship.toml;
-
       programs.zsh = {
         enable = true;
         enableCompletion = true;
@@ -25,7 +24,6 @@
         };
 
         initContent = ''
-          eval "$(starship init zsh)"
           zstyle ':completion:*' menu select
 
           bindkey '\e[1;5D' backward-word
