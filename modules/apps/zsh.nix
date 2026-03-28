@@ -30,6 +30,13 @@
           bindkey '\e[1;5C' forward-word
         '';
       };
+
+      programs.eza = {
+        enable = true;
+        git = true;
+        icons = "auto";
+        enableZshIntegration = true;
+      };
     };
   };
 }
