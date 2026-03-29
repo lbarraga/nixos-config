@@ -3,6 +3,7 @@
     includes = with den.aspects; [
       # Common System / Hardware
       core
+      theming
       gnome
       udisks
       bluetooth

@@ -8,6 +8,7 @@ let
       space-bar
       launch-new-instance
       status-area-horizontal-spacing
+      user-themes
     ];
 in {
   den.aspects.gnome = {
@@ -31,14 +32,6 @@ in {
 
     homeManager = {pkgs, ...}: {
       dconf.settings = {
-        "org/gnome/desktop/interface" = {
-          font-name = "JetBrainsMono Nerd Font 11";
-          document-font-name = "JetBrainsMono Nerd Font 11";
-          monospace-font-name = "JetBrainsMono Nerd Font 10";
-          titlebar-font = "JetBrainsMono Nerd Font Bold 11";
-          accent-color = "slate";
-        };
-
         "org/gnome/shell" = {
           disable-user-extensions = false;
           disabled-extensions = [];
