@@ -22,6 +22,7 @@
 
       # services
       immich-server
+      docker
     ];
 
     nix.settings = {
