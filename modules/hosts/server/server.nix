@@ -8,6 +8,7 @@
       # hardware
       nvidia
       ignore-laptop-lid
+      battery-protection
 
       # connectivity
       ssh-server
