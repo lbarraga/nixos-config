@@ -1,7 +1,13 @@
 {inputs, ...}: {
   den.aspects.theming = {
-    nixos = {pkgs, ...}: {
+    nixos = {
+      pkgs,
+      lib,
+      ...
+    }: {
       imports = [inputs.stylix.nixosModules.stylix];
+
+      stylix.targets.qt.platform = lib.mkForce "qtct";
 
       stylix.enable = true;
       stylix.image = ./wallpaper.jpg;
