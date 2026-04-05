@@ -12,7 +12,7 @@
       bluetooth
       printing
       sound
-      tailscale
+      netbird-client
       yubikey
 
       # Common GUI Apps
