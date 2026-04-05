@@ -1,10 +1,6 @@
 {
   den.aspects.core = {
     nixos = {options, ...}: {
-      # Bootloader
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-
       # Networking basics (hostname is defined in the specific host feature)
       networking.networkmanager.enable = true;
       services.resolved.enable = true;
