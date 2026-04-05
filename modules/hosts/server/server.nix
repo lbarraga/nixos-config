@@ -15,7 +15,7 @@
 
       # connectivity
       ssh-server
-      netbird
+      netbird-client
 
       # cli
       cli-tools
