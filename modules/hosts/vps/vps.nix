@@ -17,7 +17,7 @@
 
       # New services
       # pangolin
-      # minecraft-server
+      minecraft-server
     ];
 
     nixos = {
