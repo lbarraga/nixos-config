@@ -15,7 +15,7 @@
 
       # connectivity
       ssh-server
-      tailscale
+      netbird
 
       # cli
       cli-tools

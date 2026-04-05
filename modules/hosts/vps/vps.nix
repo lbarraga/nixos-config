@@ -7,7 +7,8 @@
       boot-legacy
       core
       ssh-server
-      tailscale
+      # tailscale
+      netbird-client
       cli-tools
       git
       nvim
@@ -16,7 +17,6 @@
       docker
 
       # New services
-      # pangolin
       minecraft-server
     ];
 
