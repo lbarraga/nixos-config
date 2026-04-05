@@ -14,8 +14,8 @@
       docker
 
       # New services
-      pangolin
-      minecraft-server
+      # pangolin
+      # minecraft-server
     ];
 
     nixos = {
