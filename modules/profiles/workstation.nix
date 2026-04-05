@@ -1,6 +1,9 @@
 {den, ...}: {
   den.aspects.workstation = {
     includes = with den.aspects; [
+      # boot
+      boot-uefi
+
       # Common System / Hardware
       core
       theming

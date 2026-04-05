@@ -3,6 +3,8 @@
 
   den.aspects.vps = {
     includes = with den.aspects; [
+      # boot
+      boot-legacy
       core
       ssh-server
       tailscale
