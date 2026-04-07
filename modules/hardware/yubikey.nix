@@ -5,7 +5,7 @@
     homeManager = {pkgs, ...}: {
       home.packages = with pkgs; [
         gnupg
-        pinentry-curses
+        pinentry-gnome3
         yubikey-manager
         yubioath-flutter
       ];
@@ -15,7 +15,7 @@
       services.gpg-agent = {
         enable = true;
         enableSshSupport = true;
-        pinentry.package = pkgs.pinentry-curses;
+        pinentry.package = pkgs.pkgs.pinentry-gnome3;
       };
 
       # Script to import your GPG public key and set ultimate trust
