@@ -6,7 +6,7 @@
         settings = {
           "$schema" = "https://starship.rs/config-schema.json";
 
-          format = "[](blue)$os$username[](bg:white fg:blue)$directory[](fg:white bg:cyan)$git_branch$git_status[](fg:cyan bg:bright-black)$docker_context$conda$pixi$aws$gcloud[](fg:bright-black)";
+          format = "[](blue)$os$username[](bg:white fg:blue)$directory[](fg:white bg:cyan)$git_branch$git_status[](fg:cyan bg:bright-black)$docker_context$conda$pixi$aws[](fg:bright-black)";
 
           right_format = "[](fg:cyan)$c$python$elixir$elm$golang$haskell$java$julia$nodejs$nim$rust$scala[](fg:white bg:cyan)$cmd_duration[](fg:blue bg:white)$character[](fg:blue)";
 
@@ -56,6 +56,16 @@
             ahead = "⇡\${count} ";
             behind = "⇣\${count} ";
             diverged = "⇕⇡\${ahead_count} ⇣\${behind_count} ";
+          };
+
+          gcloud = {
+            disabled = true;
+          };
+
+          aws = {
+            symbol = " ";
+            style = "bg:bright-black fg:white";
+            format = "[$symbol( $profile) ]($style)";
           };
 
           # Programming Language Modules
