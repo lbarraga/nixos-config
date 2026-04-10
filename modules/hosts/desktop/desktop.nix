@@ -10,6 +10,7 @@
       gaming
       llm
       embedded-dev
+      mouse-config
     ];
 
     nixos = {
