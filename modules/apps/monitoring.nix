@@ -7,7 +7,6 @@
       services.prometheus.exporters.node = {
         enable = true;
         port = 9100;
-        enabledCollectors = ["systemd"];
       };
 
       # Dynamically query the NetBird interface name and the exporter port
