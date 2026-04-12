@@ -18,6 +18,7 @@
 
       # New services
       minecraft-server
+      monitoring
     ];
 
     nixos = {
