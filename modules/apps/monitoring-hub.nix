@@ -52,6 +52,14 @@
 
         provision = {
           enable = true;
+
+          dashboards.settings.providers = [
+            {
+              name = "Dendritic Dashboards";
+              options.path = ../config/grafana/mesh-overview.json;
+            }
+          ];
+
           # Automatically wire Prometheus into Grafana
           datasources.settings.datasources = [
             {

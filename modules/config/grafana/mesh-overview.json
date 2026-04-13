@@ -1,0 +1,186 @@
+{
+  "title": "Dendritic Mesh Overview",
+  "timezone": "browser",
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "templating": {
+    "list": [
+      {
+        "name": "node",
+        "type": "query",
+        "datasource": "Prometheus",
+        "query": "label_values(node_uname_info{job=\"dendritic-mesh-nodes\"}, instance)",
+        "regex": "/^([^:]+)/",
+        "multi": true,
+        "includeAll": true,
+        "refresh": 1
+      }
+    ]
+  },
+  "panels": [
+    {
+      "type": "stat",
+      "title": "System Uptime",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 0 },
+      "options": { "graphMode": "none" },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "time() - node_boot_time_seconds{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\"}",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "s" } },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "gauge",
+      "title": "CPU Usage (%)",
+      "gridPos": { "h": 6, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "100 - (avg by (instance) (rate(node_cpu_seconds_total{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", mode=\"idle\"}[5m])) * 100)",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { 
+        "defaults": { 
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": { "mode": "absolute", "steps": [ { "color": "green", "value": null }, { "color": "yellow", "value": 75 }, { "color": "red", "value": 90 } ] }
+        } 
+      },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "gauge",
+      "title": "Storage Used (%)",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 6 },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "100 * ((sum by (instance) (node_filesystem_size_bytes{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", mountpoint=~\"/|/mnt/hdd\"})) - (sum by (instance) (node_filesystem_avail_bytes{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", mountpoint=~\"/|/mnt/hdd\"}))) / (sum by (instance) (node_filesystem_size_bytes{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", mountpoint=~\"/|/mnt/hdd\"}))",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { 
+        "defaults": { 
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": { "mode": "absolute", "steps": [ { "color": "green", "value": null }, { "color": "yellow", "value": 80 }, { "color": "red", "value": 90 } ] }
+        } 
+      },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "stat",
+      "title": "Storage Capacity",
+      "gridPos": { "h": 6, "w": 12, "x": 12, "y": 6 },
+      "options": { 
+        "graphMode": "none",
+        "textMode": "value_and_name"
+      },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "(sum by (instance) (node_filesystem_size_bytes{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", mountpoint=~\"/|/mnt/hdd\"})) - (sum by (instance) (node_filesystem_avail_bytes{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", mountpoint=~\"/|/mnt/hdd\"}))",
+          "legendFormat": "{{instance}} Used"
+        },
+        {
+          "datasource": "Prometheus",
+          "expr": "sum by (instance) (node_filesystem_size_bytes{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", mountpoint=~\"/|/mnt/hdd\"})",
+          "legendFormat": "{{instance}} Total"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "bytes" } },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "timeseries",
+      "title": "CPU Usage (%)",
+      "gridPos": { "h": 7, "w": 12, "x": 0, "y": 12 },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "100 - (avg by (instance) (rate(node_cpu_seconds_total{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", mode=\"idle\"}[5m])) * 100)",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percent", "min": 0, "max": 100 } },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Memory Usage (Excluding Cache/Buffers)",
+      "gridPos": { "h": 7, "w": 12, "x": 12, "y": 12 },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "100 - (100 * node_memory_MemAvailable_bytes{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\"} / node_memory_MemTotal_bytes{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\"})",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percent", "min": 0, "max": 100 } },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Network Traffic (In)",
+      "gridPos": { "h": 7, "w": 12, "x": 0, "y": 19 },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "sum by (instance) (rate(node_network_receive_bytes_total{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", device!~\"lo|veth.*|docker.*|br-.*\"}[5m]))",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "Bps" } },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Network Traffic (Out)",
+      "gridPos": { "h": 7, "w": 12, "x": 12, "y": 19 },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "sum by (instance) (rate(node_network_transmit_bytes_total{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", device!~\"lo|veth.*|docker.*|br-.*\"}[5m]))",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "Bps" } },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Disk I/O (Read)",
+      "gridPos": { "h": 7, "w": 12, "x": 0, "y": 26 },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "sum by (instance) (rate(node_disk_read_bytes_total{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", device=~\"sd.*|nvme.*|vd.*\"}[5m]))",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "Bps" } },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Disk I/O (Write)",
+      "gridPos": { "h": 7, "w": 12, "x": 12, "y": 26 },
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "expr": "sum by (instance) (rate(node_disk_written_bytes_total{job=\"dendritic-mesh-nodes\", instance=~\"^$node(:.*)?\", device=~\"sd.*|nvme.*|vd.*\"}[5m]))",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "fieldConfig": { "defaults": { "unit": "Bps" } },
+      "transformations": [ { "id": "renameByRegex", "options": { "regex": "^([^:]+)(?::\\d+)?(.*)$", "renamePattern": "$1$2" } } ]
+    }
+  ]
+}

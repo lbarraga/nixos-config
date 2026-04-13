@@ -11,6 +11,9 @@
       llm
       embedded-dev
       mouse-config
+
+      monitoring
+      monitoring-hub
     ];
 
     nixos = {
