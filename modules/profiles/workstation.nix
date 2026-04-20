@@ -7,7 +7,7 @@
       # Common System / Hardware
       core
       theming
-      gnome
+      kde
       udisks
       bluetooth
       printing
