@@ -12,8 +12,6 @@
       embedded-dev
       mouse-config
 
-      impermanence
-
       monitoring
       monitoring-hub
     ];

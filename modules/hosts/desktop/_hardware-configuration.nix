@@ -17,18 +17,9 @@
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
-  # 1. Rename your old root to /persist and make it mandatory for boot
-  fileSystems."/persist" = {
+  fileSystems."/" = {
     device = "/dev/disk/by-uuid/a86706fb-3a0a-430e-9009-d019fd1d775a";
     fsType = "ext4";
-    neededForBoot = true;
-  };
-
-  # 2. Create the new RAM disk for the actual root
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = ["defaults" "size=32G" "mode=755"];
   };
 
   fileSystems."/boot" = {
