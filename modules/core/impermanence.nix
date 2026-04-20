@@ -18,6 +18,7 @@
         ];
         files = [
           "/etc/machine-id"
+          "/etc/shadow"
         ];
       };
       programs.fuse.userAllowOther = true;
