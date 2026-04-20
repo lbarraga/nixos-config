@@ -21,13 +21,11 @@
           "/etc/shadow"
         ];
       };
-      programs.fuse.userAllowOther = true;
     };
 
     homeManager = {
-      imports = [inputs.impermanence.nixosModules.home-manager.impermanence];
-
-      home.persistence."/persist/home/lukasbt" = {
+      # The persistent storage path automatically appends the user home directory now
+      home.persistence."/persist" = {
         directories = [
           # --- STANDARD & CLOUD ---
           "Desktop"
@@ -71,7 +69,6 @@
           ".config/obsidian"
           ".config/spotify"
           ".local/share/Anki2"
-          ".config/xournalpp"
 
           # --- SYSTEM CACHES & CLI ---
           ".local/share/zsh"
@@ -83,8 +80,6 @@
         files = [
           ".zsh_history"
         ];
-
-        allowOther = true;
       };
     };
   };
