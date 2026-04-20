@@ -20,6 +20,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    impermanence.url = "github:nix-community/impermanence";
+
     den.url = "github:vic/den";
     import-tree.url = "github:vic/import-tree";
 
