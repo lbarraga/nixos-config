@@ -26,6 +26,7 @@
 
       # services
       docker
+      music-server
       monitoring
       monitoring-hub
     ];
