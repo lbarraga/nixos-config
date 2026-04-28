@@ -4,7 +4,7 @@
       home.packages = with pkgs; [
         spotify
         discord
-        element
+        element-desktop
         obsidian
         synology-drive-client
         anki
