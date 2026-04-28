@@ -26,7 +26,7 @@
 
       # services
       docker
-      music-server
+      matrix-server
       monitoring
       monitoring-hub
     ];
