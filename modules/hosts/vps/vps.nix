@@ -1,5 +1,6 @@
-{den, ...}: {
-  den.hosts.x86_64-linux.vps.users.lukasbt = {};
+{ den, ... }:
+{
+  den.hosts.x86_64-linux.vps.users.lukasbt = { };
 
   den.aspects.vps = {
     includes = with den.aspects; [
@@ -19,10 +20,11 @@
       # New services
       minecraft-server
       monitoring
+      matrix-server
     ];
 
     nixos = {
-      imports = [./_hardware-configuration.nix];
+      imports = [ ./_hardware-configuration.nix ];
       networking.hostName = "vps";
 
       services.qemuGuest.enable = true;
