@@ -7,6 +7,8 @@
         settings.global = {
           server_name = config.networking.hostName;
           allow_registration = true;
+          address = "0.0.0.0";
+          port = 6167;
         };
       };
 
