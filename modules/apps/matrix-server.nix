@@ -5,7 +5,7 @@
       services.matrix-conduit = {
         enable = true;
         settings.global = {
-          server_name = config.networking.hostName;
+          server_name = "matrix.barragan.cloud";
           allow_registration = true;
           address = "0.0.0.0";
           port = 6167;
