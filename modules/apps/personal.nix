@@ -2,7 +2,7 @@
   den.aspects.personal = {
     homeManager = {pkgs, ...}: {
       home.packages = with pkgs; [
-        spotify
+        deezer-desktop
         discord
         element-desktop
         obsidian
