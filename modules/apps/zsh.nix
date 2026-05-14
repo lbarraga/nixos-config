@@ -21,6 +21,7 @@
           lt = "eza --tree";
           edit = "xournalpp";
           open = "xdg-open";
+          temp = "cd \"$(mktemp -d)\"";
         };
 
         initContent = ''
