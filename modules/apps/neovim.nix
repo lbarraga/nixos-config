@@ -22,45 +22,44 @@
           cmdheight = 0;
           number = true;
           relativenumber = true;
+          pumheight = 5; # Limits the autocomplete menu item amount
+
+          undofile = true;
+
+          # Indentation settings
+          autoindent = true;
+          smartindent = true;
+          expandtab = true; # Uses spaces instead of tabs
+          shiftwidth = 2; # Sets the number of spaces per indent
+          tabstop = 2; # Sets how many spaces a tab character represents
         };
+
+        diagnostics = {
+          virtual_text = {
+            prefix = "●";
+            spacing = 4;
+          };
+          signs = true;
+          underline = true;
+          severity_sort = true;
+        };
+
+        extraConfigLua = ''
+          vim.api.nvim_create_autocmd("TextYankPost", {
+            desc = "Highlight when yanking (copying) text",
+            callback = function()
+              vim.highlight.on_yank({ timeout = 200 })
+            end,
+          })
+        '';
 
         extraPackages = [pkgs.alejandra];
 
-        plugins.noice = {
-          enable = true;
-          settings = {
-            presets = {
-              bottom_search = true;
-              command_palette = true;
-              long_message_to_split = true;
-            };
-          };
-        };
-
         globals.mapleader = " ";
 
-        plugins.indent-blankline = {
-          enable = true;
-          settings = {
-            scope = {
-              enabled = false;
-            };
-          };
-        };
-
-        plugins.mini = {
-          enable = true;
-          modules = {
-            indentscope = {
-              symbol = "│";
-              options = {try_as_border = true;};
-              draw = {
-                animation = {
-                  __raw = "require('mini.indentscope').gen_animation.none()";
-                };
-              };
-            };
-          };
+        # use system clipboard
+        clipboard = {
+          register = "unnamedplus";
         };
 
         # Core Keymaps
@@ -109,9 +108,62 @@
             action = "<C-w>l";
             options = {desc = "Go to right window";};
           }
+          {
+            mode = "n";
+            key = "<leader>ca";
+            action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
+            options = {desc = "Code Action";};
+          }
+          {
+            mode = "n";
+            key = "<leader>cd";
+            action = "<cmd>lua vim.diagnostic.open_float()<cr>";
+            options = {desc = "Line Diagnostics";};
+          }
+          {
+            mode = "n";
+            key = "qq";
+            action = "<cmd>qa<cr>";
+            options = {desc = "Quit all";};
+          }
         ];
 
         colorschemes.catppuccin.enable = true;
+
+        plugins.noice = {
+          enable = true;
+          settings = {
+            presets = {
+              bottom_search = true;
+              command_palette = true;
+              long_message_to_split = true;
+            };
+          };
+        };
+
+        plugins.indent-blankline = {
+          enable = true;
+          settings = {
+            scope = {
+              enabled = false;
+            };
+          };
+        };
+
+        plugins.mini = {
+          enable = true;
+          modules = {
+            indentscope = {
+              symbol = "│";
+              options = {try_as_border = true;};
+              draw = {
+                animation = {
+                  __raw = "require('mini.indentscope').gen_animation.none()";
+                };
+              };
+            };
+          };
+        };
 
         # Statusline
         plugins.lualine = {
@@ -129,6 +181,11 @@
               enable = true;
               installCargo = false;
               installRustc = false;
+              settings = {
+                check = {
+                  command = "clippy";
+                };
+              };
             };
           };
         };
@@ -163,6 +220,28 @@
           };
         };
 
+        plugins.cmp = {
+          enable = true;
+          autoEnableSources = true;
+          settings = {
+            window = {
+              completion = {border = "rounded";};
+              documentation = {border = "rounded";};
+            };
+            sources = [
+              {name = "nvim_lsp";} # Code completions pulled from lsp
+              {name = "path";} # code completions for typing directories
+            ];
+            mapping = {
+              "<CR>" = "cmp.mapping.confirm({ select = true })";
+              "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+              "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+              "<C-Space>" = "cmp.mapping.complete()";
+              "<C-e>" = "cmp.mapping.abort()";
+            };
+          };
+        };
+
         plugins.neo-tree = {
           enable = true;
           settings = {
@@ -176,8 +255,19 @@
           };
         };
 
+        plugins.dressing = {
+          enable = true;
+          settings = {
+            select = {
+              backend = ["builtin"];
+              builtin = {
+                relative = "cursor";
+              };
+            };
+          };
+        };
+
         # Specific Plugins
-        plugins.render-markdown.enable = true;
         plugins.web-devicons.enable = true;
         plugins.telescope.enable = true;
         plugins.which-key.enable = true;
