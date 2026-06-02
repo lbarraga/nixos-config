@@ -45,6 +45,7 @@
 
     homeManager = {
       stylix.targets.neovim.enable = false; # i manage ny own nvim
+      stylix.targets.nixvim.enable = false;
     };
   };
 }
