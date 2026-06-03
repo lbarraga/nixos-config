@@ -7,7 +7,7 @@
 
     my-neovim = {
       url = "github:lbarraga/neovim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     home-manager = {

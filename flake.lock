@@ -107,16 +107,16 @@
       "inputs": {
         "import-tree": "import-tree_2",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ],
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1780500759,
-        "narHash": "sha256-UP8293G1AClh8fv6pLZeeMU0dAenxN3UL7wdMWyaHs4=",
+        "lastModified": 1780522091,
+        "narHash": "sha256-9fs8S++P6MMkBhAcyzXtaw2pS7CYpIQ72EphuRQDMuI=",
         "owner": "lbarraga",
         "repo": "neovim",
-        "rev": "cb55e0c5b71cb7a6f2cbce398cc492ca227b96c1",
+        "rev": "d087e9a1046dcbb1a19d388b0158f2b99b06a4ae",
         "type": "github"
       },
       "original": {
