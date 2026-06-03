@@ -6,7 +6,6 @@
 
       # Common System / Hardware
       core
-      theming
       gnome
       udisks
       bluetooth

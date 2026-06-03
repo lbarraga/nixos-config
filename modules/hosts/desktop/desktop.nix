@@ -8,12 +8,8 @@
       # Desktop-specific hardware & heavy apps
       nvidia
       gaming
-      llm
       embedded-dev
       mouse-config
-
-      monitoring
-      monitoring-hub
     ];
 
     nixos = {
