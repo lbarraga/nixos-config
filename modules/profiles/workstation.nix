@@ -6,6 +6,7 @@
 
       # Common System / Hardware
       core
+      gaming
       gnome
       udisks
       bluetooth
