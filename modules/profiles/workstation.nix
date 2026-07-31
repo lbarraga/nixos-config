@@ -18,6 +18,7 @@
       # Common GUI Apps
       fonts
       brave-browser
+      freecad
       office
       system-tray
       personal
