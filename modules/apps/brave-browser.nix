@@ -1,9 +1,9 @@
-{
+{inputs, ...}: {
   den.aspects.brave-browser = {
     homeManager = {pkgs, ...}: {
       programs.brave = {
         enable = true;
-        package = pkgs.brave;
+        package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.brave-origin;
         extensions = [
           {id = "dhlnjfhjjbminbjbegeiijdakdkamjoi";} # nord theme
           {id = "nngceckbapebfimnlniiiahkandclblb";} # bitwarden
