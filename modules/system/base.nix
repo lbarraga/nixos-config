@@ -14,7 +14,7 @@
       enable = true;
 
       # so `nh os switch` needs no path
-      flake = "/home/${config.my.username}/nixos-work";
+      flake = "/home/${config.my.username}/nixos-config";
 
       clean = {
         enable = true;
