@@ -152,6 +152,17 @@ hide themselves when the hardware is absent.
 That is fine until the desktop wants fixed monitor positions, which the no-
 `output`-blocks rule forbids. Unresolved on purpose.
 
+## Another flake consumes the shell
+
+My homelab config at `~/homelab` is a separate flake that takes this one as an
+input. It copies none of the terminal side: it re-exports
+`modules.nixos.zsh` and `modules.nixos.cli-tools` from here, and binds its own
+`mine` to `packages.<system>` so those modules find `zsh` and `nvim`.
+
+So four names are load-bearing outside this repo — the two modules and the two
+packages. Renaming any of them, or changing what `mine` is expected to carry,
+breaks that flake silently until it is next built. Check `~/homelab` first.
+
 ## Config file conventions
 
 - nixfmt keeps a function's argument pattern on one line only if it is written
