@@ -2,6 +2,7 @@
   flake.modules.nixos.personal-apps = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       spotify
+      feishin
       discord
       anki
       synology-drive-client
