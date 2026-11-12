@@ -7,6 +7,7 @@
       cad
       brave
       netbird
+      syncthing
 
       nvidia
       gaming

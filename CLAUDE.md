@@ -140,7 +140,7 @@ the editor, the palette — and differ only in which features they list.
 - Laptop only: `power` (TLP), `work-apps` (the two Firefoxes and Mattermost),
   `claude-code`, `docker`.
 - Desktop only: `nvidia`, `gaming`, `mouse-config`, `brave`, `netbird`, `cad`,
-  `personal-apps`, `music`.
+  `personal-apps`, `music`, `syncthing`.
 - `common-apps` is what both get, and is the place to put anything that turns
   out to belong on both.
 
@@ -151,6 +151,26 @@ hide themselves when the hardware is absent.
 `config.kdl` lives inside the niri *package*, so both machines share one copy.
 That is fine until the desktop wants fixed monitor positions, which the no-
 `output`-blocks rule forbids. Unresolved on purpose.
+
+## Syncthing
+
+`system/syncthing.nix` syncs `~/sync` with vic, the homelab node, which is the
+always-on peer every client talks to. It is a replacement for Synology Drive,
+so the same module fits the laptop once vic's own config has been told that
+machine's device id.
+
+Two things about it are worth knowing. The module names vic by device id and
+declares the one shared folder, and `overrideDevices` and `overrideFolders`
+default to true, so anything clicked together in the web ui at
+`http://localhost:8384` is reverted on the next rebuild. And this machine's own
+identity is the `cert.pem` and `key.pem` pair in `~/.config/syncthing`, which is
+not in this repo and not in any backup here. Losing it is not serious, since
+syncthing then generates a new one, but the new device id has to be written into
+vic's config before anything syncs again.
+
+Global discovery and the relays are off, because every peer is either on the LAN
+or in the netbird mesh. That is why vic is given an explicit address,
+`tcp://sync.barragan.party:22000`, which resolves inside the mesh only.
 
 ## Another flake consumes the shell
 
