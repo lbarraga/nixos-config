@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.syncthing =
-    { config, ... }:
+    { config, pkgs, ... }:
     let
       inherit (config.my) username;
 
@@ -13,29 +13,26 @@
         user = username;
         group = "users";
 
-        # Puts the config and the device key in ~/.config/syncthing, where
-        # syncthing would have put them itself.
+        # Puts the config and the device key in ~/.config/syncthing, which is
+        # also where syncthingtray looks for the api key.
         dataDir = "/home/${username}";
 
-        # TCP/UDP 22000 for transfers, UDP 21027 for discovery on the LAN.
         openDefaultPorts = true;
 
         settings = {
           devices.vic = {
             id = "KMS77RU-P3ISH3T-IRK4HVT-EB3LFXB-7IVODJF-MIXYRB3-VCMWB7O-Q43G4AN";
 
-            # On the LAN the local announcements find vic on their own. Away
-            # from it, global discovery is off, so the name has to be written
-            # down. It is the netbird record that already points at vic.
+            # Local announcements find vic on the LAN. Away from it, global
+            # discovery is off, so the netbird name has to be written down.
             addresses = [
               "tcp://sync.barragan.party:22000"
               "dynamic"
             ];
           };
 
+          # Agreed with vic; the path differs per machine.
           folders.${syncDir} = {
-            # Agreed with vic. The path differs per machine, so the id cannot
-            # be left to default to it.
             id = "sync";
             label = "sync";
             devices = [ "vic" ];
@@ -66,5 +63,20 @@
           mode = "0755";
         };
       };
+
+      systemd.user.services.syncthingtray = {
+        description = "Syncthing tray icon";
+        partOf = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
+        wantedBy = [ "graphical-session.target" ];
+        serviceConfig = {
+          # --wait, because quickshell may not have claimed the tray yet.
+          ExecStart = "${pkgs.syncthingtray-minimal}/bin/syncthingtray --wait --single-instance";
+          Restart = "on-failure";
+        };
+      };
+
+      # syncthingctl, for driving it from a shell
+      environment.systemPackages = [ pkgs.syncthingtray-minimal ];
     };
 }

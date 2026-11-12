@@ -168,6 +168,11 @@ not in this repo and not in any backup here. Losing it is not serious, since
 syncthing then generates a new one, but the new device id has to be written into
 vic's config before anything syncs again.
 
+The tray icon is `syncthingtray-minimal`, run as a user service alongside
+`udiskie`. It reads the api key out of `~/.config/syncthing/config.xml` by
+itself, which is what `dataDir` is set for, and `--wait` is there because
+quickshell may not have claimed the tray yet when it starts.
+
 Global discovery and the relays are off, because every peer is either on the LAN
 or in the netbird mesh. That is why vic is given an explicit address,
 `tcp://sync.barragan.party:22000`, which resolves inside the mesh only.
