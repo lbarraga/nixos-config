@@ -5,7 +5,7 @@
       feishin
       discord
       anki
-      synology-drive-client
+      # synology-drive-client
     ];
 
     systemd.user.services.synology-drive = {
