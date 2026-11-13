@@ -63,20 +63,5 @@
           mode = "0755";
         };
       };
-
-      systemd.user.services.syncthingtray = {
-        description = "Syncthing tray icon";
-        partOf = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
-        wantedBy = [ "graphical-session.target" ];
-        serviceConfig = {
-          # --wait, because quickshell may not have claimed the tray yet.
-          ExecStart = "${pkgs.syncthingtray-minimal}/bin/syncthingtray --wait --single-instance";
-          Restart = "on-failure";
-        };
-      };
-
-      # syncthingctl, for driving it from a shell
-      environment.systemPackages = [ pkgs.syncthingtray-minimal ];
     };
 }
